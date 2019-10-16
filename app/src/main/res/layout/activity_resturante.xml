@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    >
+
+  <TextView
+      android:layout_marginTop="20dp"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="Resturante"
+      android:textSize="30sp"
+      android:textAlignment="center"
+
+      />
+
+  <ListView
+      android:id="@+id/listView_resturante"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="50dp"
+      />
+
+  <RelativeLayout
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="30dp"
+      >
+
+    <Button
+        android:id="@+id/button_add"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="Add" />
+
+    <Button
+        android:id="@+id/button_edit"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:text="Edit" />
+
+    <Button
+        android:id="@+id/button_remove"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="200dp"
+        android:text="Remove" />
+
+  </RelativeLayout>
+
+
+</LinearLayout>
