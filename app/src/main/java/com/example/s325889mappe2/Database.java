@@ -1,5 +1,6 @@
 package com.example.s325889mappe2;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -21,7 +22,7 @@ public class Database extends SQLiteOpenHelper {
 
     public Database(Context context) {
         super(context, DATABASE_NAME, null, 1);
-        SQLiteDatabase db = this.getWritableDatabase();
+        //SQLiteDatabase db = this.getWritableDatabase();
 
     }
 
@@ -38,4 +39,30 @@ public class Database extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+
+    public void addDataResturant(String name, String adress, String telefone, String type){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(REST_COL_2, name);
+        contentValues.put(REST_COL_3, adress);
+        contentValues.put(REST_COL_4, telefone);
+        contentValues.put(REST_COL_5, type);
+        db.insert(TABLE_NAME,null, contentValues);
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

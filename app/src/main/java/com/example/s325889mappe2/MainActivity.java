@@ -54,8 +54,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
+    // GODE rå er dyre hvertfall fra jaso, send data til db --> fra db til arraylist --> arrayadapther
     public void nextIntent(int i){
         switch (i){
             case 1:

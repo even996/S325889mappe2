@@ -16,12 +16,33 @@
 
       />
 
-  <ListView
-      android:id="@+id/listView_resturante"
-      android:layout_width="wrap_content"
+  <EditText
+      android:id="@+id/editText_name"
+      android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginTop="50dp"
-      />
+      android:maxLines="1"
+      android:hint="Navn:" />
+
+  <EditText
+      android:id="@+id/editText_adress"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:maxLines="1"
+      android:hint="Adress:" />
+
+  <EditText
+      android:id="@+id/editText_telephone"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:maxLines="1"
+      android:hint="Phone:" />
+
+  <EditText
+      android:id="@+id/editText_type"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:maxLines="1"
+      android:hint="TYpe:" />
 
   <RelativeLayout
       android:layout_width="wrap_content"
@@ -50,6 +71,13 @@
         android:text="Remove" />
 
   </RelativeLayout>
+
+  <ListView
+      android:id="@+id/listView_resturante"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="50dp"
+      />
 
 
 </LinearLayout>
