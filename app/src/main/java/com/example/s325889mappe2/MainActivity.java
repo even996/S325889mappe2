@@ -10,13 +10,13 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
     private Button btnResturante, btnFriends, btnOrder;
-    private DataBase dataBase;
+    private Database dataBase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        dataBase = new DataBase(this);
+        dataBase = new Database(this);
         btnResturante = findViewById(R.id.button_resturante);
         btnFriends = findViewById(R.id.button_venner);
         btnOrder = findViewById(R.id.nutton_bestilling);
