@@ -19,6 +19,7 @@
         <activity android:name=".ResturanteActivity"></activity>
         <activity android:name=".FriendsActivity"></activity>
         <activity android:name=".OrdersActivity"></activity>
+        <activity android:name=".ResturantAddActivity"></activity>
     </application>
 
 </manifest>

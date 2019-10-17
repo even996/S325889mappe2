@@ -52,7 +52,7 @@ public class Database extends SQLiteOpenHelper {
         contentValues.put(REST_COL_4, telefone);
         contentValues.put(REST_COL_5, type);
         db.insert(CONTACT_TABLE,null, contentValues);
-        getDatabase(name);
+//        getDatabase(name);
     }
 
     public void getDatabase(String name){
