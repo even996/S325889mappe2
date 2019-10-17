@@ -30,7 +30,8 @@ public class FriendsActivity extends Activity {
         arrayList.add("KIM");
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayList);
         listView.setAdapter(arrayAdapter);
-
     }
+
+
 
 }

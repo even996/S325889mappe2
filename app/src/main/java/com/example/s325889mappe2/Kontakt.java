@@ -2,7 +2,8 @@ package com.example.s325889mappe2;
 
 public class Kontakt {
 
-    String ID, navn, telefon;
+    String navn, telefon;
+    Long ID;
 
     Kontakt(long ID, String navn, String telefon){
         this.ID = ID;
@@ -11,11 +12,11 @@ public class Kontakt {
     }
 
 
-    public String getID() {
+    public long getID() {
         return ID;
     }
 
-    public void setID(String ID) {
+    public void setID(long ID) {
         this.ID = ID;
     }
 

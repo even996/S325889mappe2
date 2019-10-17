@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ResturanteActivity extends Activity {
 
@@ -37,6 +38,7 @@ public class ResturanteActivity extends Activity {
         removeBtn = findViewById(R.id.button_remove);
         editBtn = findViewById(R.id.button_edit);
         db = new Database(this);
+        showData();
         add();
     }
 
@@ -51,10 +53,26 @@ public class ResturanteActivity extends Activity {
         });
     }
 
+
+    public void showData(){
+        List<Kontakt> kontakts = db.finnAlleKontakter();
+        ArrayList<String> navn = new ArrayList<>();
+        for (Kontakt kontakt : kontakts){
+            navn.add(kontakt.getNavn());
+        }
+        ArrayAdapter <String> itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,navn);
+
+        //ArrayAdapter <Kontakt> itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, kontakts);
+        listView.setAdapter(itemsAdapter);
+
+
+    }
+
+
+
 /*
 
     public void addItems(String name, String adress, String telefone, String type){
-        Cursor cursor = new Cursor();
         ArrayList<String> arrayList = new ArrayList<>();
         arrayList.add("yoyoyoyo");
         arrayList.add("JASO");
@@ -65,7 +83,7 @@ public class ResturanteActivity extends Activity {
         listView.setAdapter(arrayAdapter);
 
     }
-    
+
  */
 
 
