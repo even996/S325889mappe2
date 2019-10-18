@@ -29,11 +29,11 @@ public class FriendsActivity extends Activity {
         editBtn = findViewById(R.id.button_edit);
         db = new Database(this);
         showData();
-        add();
+        goToAdd();
     }
 
 
-    public void add(){
+    public void goToAdd(){
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,9 +44,10 @@ public class FriendsActivity extends Activity {
     }
 
     public void nextIntent(){
-        Intent intent = new Intent(this, ResturantAddActivity.class);
+        Intent intent = new Intent(this, FriendAddActivity.class);
         startActivity(intent);
     }
+
 
 
     public void showData(){

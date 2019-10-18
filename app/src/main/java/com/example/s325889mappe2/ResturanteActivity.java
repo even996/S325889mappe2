@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -30,12 +29,12 @@ public class ResturanteActivity extends Activity {
         editBtn = findViewById(R.id.button_edit);
         db = new Database(this);
         showData();
-        add();
+        goToAdd();
     }
 
 
 
-    public void add(){
+    public void goToAdd(){
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,10 +52,10 @@ public class ResturanteActivity extends Activity {
 
 
     public void showData(){
-        List<Kontakt> kontakts = db.finnAlleKontakter();
+        List<Restaurant> restaurants = db.finnAlleResturant();
         ArrayList<String> navn = new ArrayList<>();
-        for (Kontakt kontakt : kontakts){
-            navn.add(kontakt.getNavn());
+        for (Restaurant restaurant : restaurants){
+            navn.add(restaurant.getNavn());
         }
         ArrayAdapter <String> itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,navn);
 

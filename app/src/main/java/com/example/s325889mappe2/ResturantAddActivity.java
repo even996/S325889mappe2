@@ -29,12 +29,12 @@ public class ResturantAddActivity extends Activity {
         removeBtn = findViewById(R.id.button_remove);
         editBtn = findViewById(R.id.button_edit);
         db = new Database(this);
-        goToAdd();
+        Add();
 
     }
 
 
-    public void goToAdd(){
+    public void Add(){
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

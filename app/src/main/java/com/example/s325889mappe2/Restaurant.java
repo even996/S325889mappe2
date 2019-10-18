@@ -3,13 +3,23 @@ package com.example.s325889mappe2;
 public class Restaurant {
 
     String navn, addresse, telefonNr, type;
+    Long ID;
 
 
-    public Restaurant(String navn, String addresse, String telefonNr, String type) {
+    public Restaurant(Long ID, String navn, String addresse, String telefonNr, String type) {
         this.navn = navn;
         this.addresse = addresse;
         this.telefonNr = telefonNr;
         this.type = type;
+        this.ID = ID;
+    }
+
+    public Long getID() {
+        return ID;
+    }
+
+    public void setID(Long ID) {
+        this.ID = ID;
     }
 
     public String getNavn() {

@@ -11,7 +11,7 @@ import android.widget.Toast;
 public class FriendAddActivity extends Activity {
 
 
-    private EditText name, adress, telefone, type;
+    private EditText name, telefone;
     private Button addBtn, removeBtn, editBtn;
     private Database db;
 
@@ -20,27 +20,24 @@ public class FriendAddActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_resturante_add);
+        setContentView(R.layout.activity_friends_add);
         name = findViewById(R.id.editText_name);
-        adress = findViewById(R.id.editText_adress);
         telefone = findViewById(R.id.editText_telephone);
-        type = findViewById(R.id.editText_type);
         addBtn = findViewById(R.id.button_add);
         removeBtn = findViewById(R.id.button_remove);
         editBtn = findViewById(R.id.button_edit);
         db = new Database(this);
-        goToAdd();
+        Add();
 
     }
 
 
-    public void goToAdd(){
+    public void Add(){
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(FriendAddActivity.this, "Resturante Added", Toast.LENGTH_SHORT).show();
-                db.addDataResturant(name.getText().toString(), adress.getText().toString(),
-                        telefone.getText().toString(),type.getText().toString());
+                Toast.makeText(FriendAddActivity.this, "Venner Added", Toast.LENGTH_SHORT).show();
+                db.addDataFriend(name.getText().toString(), telefone.getText().toString());
             }
         });
     }

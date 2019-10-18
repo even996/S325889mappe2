@@ -13,14 +13,25 @@ public class Database extends SQLiteOpenHelper {
 
 
     public static final String DATABASE_NAME = "DATABASE.db";
-    public static final String CONTACT_TABLE = "Resturant_table";
-    public static final String TABLE_NAME2 = "Friends_table";
-    public static final String TABLE_NAME3 = "Order_table";
+    public static final String RESTURANT_TABLE = "Resturant_table";
+    public static final String FRIENDS_TABLE = "Friends_table";
+    public static final String TABLE_NAME = "Order_table";
     public static final String REST_COL_1 = "ID";
     public static final String REST_COL_2 = "NAME";
     public static final String REST_COL_3 = "ADRESS";
     public static final String REST_COL_4 = "TELEPHONE";
     public static final String REST_COL_5 = "TYPE";
+    public static final String FRIENDS_COL_1 = "ID";
+    public static final String FRIENDS_COL_2 = "NAME";
+    public static final String FRIENDS_COL_3 = "TELEPHONE";
+
+    private static final String CREATE_TABLE = "CREATE TABLE " +
+            RESTURANT_TABLE + "(" + REST_COL_1 + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + REST_COL_2 + " TEXT," + REST_COL_3 + " TEXT," + REST_COL_4 + " TEXT," + REST_COL_5 + " TEXT" + ")";
+
+    private static final String CREATE_TABLE2 = "CREATE TABLE " +
+            FRIENDS_TABLE + "(" + FRIENDS_COL_1 + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + FRIENDS_COL_2 + " TEXT," + FRIENDS_COL_3 + " TEXT" + ")";
 
 
 
@@ -32,14 +43,15 @@ public class Database extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table " + CONTACT_TABLE + " (" + REST_COL_1 + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                REST_COL_2 + " TEXT," + REST_COL_3 + " TEXT, " + REST_COL_4 + " TEXT, "  + REST_COL_5 + " TEXT" + ")");
+        db.execSQL(CREATE_TABLE);
+        db.execSQL(CREATE_TABLE2);
 
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        db.execSQL("DROP TABLE IF EXISTS " + CONTACT_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + RESTURANT_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + FRIENDS_TABLE);
         onCreate(db);
     }
 
@@ -51,34 +63,46 @@ public class Database extends SQLiteOpenHelper {
         contentValues.put(REST_COL_3, adress);
         contentValues.put(REST_COL_4, telefone);
         contentValues.put(REST_COL_5, type);
-        db.insert(CONTACT_TABLE,null, contentValues);
+        db.insert(RESTURANT_TABLE,null, contentValues);
+//        getDatabase(name);
+    }
+
+    public void addDataFriend(String name,String telefone){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(FRIENDS_COL_2, name);
+        contentValues.put(FRIENDS_COL_3, telefone);
+        db.insert(FRIENDS_TABLE,null, contentValues);
 //        getDatabase(name);
     }
 
     public void getDatabase(String name){
-        Cursor data = this.getData();
+        Cursor data = this.getResturantData();
         ArrayList<String> listData = new ArrayList<>();
         while (data.moveToNext())
             listData.add(data.getString(1));
 
         SQLiteDatabase db = this.getWritableDatabase();
-        //ResultSet rs = db.execSQL("SELECT " + REST_COL_2 + " FROM " + CONTACT_TABLE + " WHERE " + REST_COL_2 + " = " + "\"" + name + "\"");
-        db.execSQL("SELECT " + REST_COL_2 + " FROM " + CONTACT_TABLE + " WHERE " + REST_COL_2 + " = " + "\"" + name + "\"" );
+        //ResultSet rs = db.execSQL("SELECT " + REST_COL_2 + " FROM " + RESTURANT_TABLE + " WHERE " + REST_COL_2 + " = " + "\"" + name + "\"");
+        db.execSQL("SELECT " + REST_COL_2 + " FROM " + RESTURANT_TABLE + " WHERE " + REST_COL_2 + " = " + "\"" + name + "\"" );
         System.out.println(name + "TISS");
     }
 
-    public Cursor getData(){
+
+    public Cursor getResturantData(){
         SQLiteDatabase db = this.getWritableDatabase();
-        String query = "SELECT * FROM " + CONTACT_TABLE;
+        String query = "SELECT * FROM " + RESTURANT_TABLE;
         Cursor data = db.rawQuery(query,null);
         return data;
     }
+
+
 
     public List<Kontakt> finnAlleKontakter(){
         List<Kontakt> kontaktList = new ArrayList<>();
         Kontakt kontakt;
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM " + CONTACT_TABLE,null);
+        Cursor cursor = db.rawQuery("SELECT * FROM " + FRIENDS_TABLE,null);
         if (cursor.moveToFirst()){
             do {
                 kontakt = new Kontakt(cursor.getLong(0), cursor.getString(1), cursor.getString(2));
@@ -88,6 +112,24 @@ public class Database extends SQLiteOpenHelper {
             db.close();
         }
         return kontaktList;
+    }
+
+
+    public List<Restaurant> finnAlleResturant(){
+            List<Restaurant> restaurantList = new ArrayList<>();
+            Restaurant restaurant;
+            SQLiteDatabase db = this.getWritableDatabase();
+            Cursor cursor = db.rawQuery("SELECT * FROM " + RESTURANT_TABLE,null);
+            if (cursor.moveToFirst()){
+                do {
+                    restaurant = new Restaurant(cursor.getLong(0), cursor.getString(1), cursor.getString(2),
+                            cursor.getString(3), cursor.getString(4));
+                    restaurantList.add(restaurant);
+                }while(cursor.moveToNext());
+                cursor.close();
+                db.close();
+            }
+            return restaurantList;
     }
 }
 
