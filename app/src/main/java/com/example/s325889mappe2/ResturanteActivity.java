@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,8 +32,8 @@ public class ResturanteActivity extends Activity {
         db = new Database(this);
         showData();
         goToAdd();
+        onEdit();
     }
-
 
 
     public void goToAdd(){
@@ -47,6 +49,15 @@ public class ResturanteActivity extends Activity {
     public void nextIntent(){
         Intent intent = new Intent(this, ResturantAddActivity.class);
         startActivity(intent);
+    }
+
+    public void onEdit(){
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(ResturanteActivity.this, "Resturante Added", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 
