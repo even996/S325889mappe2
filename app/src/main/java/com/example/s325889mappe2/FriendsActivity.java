@@ -2,6 +2,7 @@ package com.example.s325889mappe2;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -21,6 +22,11 @@ public class FriendsActivity extends Activity {
     private Button addBtn, removeBtn, editBtn;
     private Database db;
 
+    private ArrayList<Kontakt> listItems;
+    ArrayAdapter arrayAdapter;
+    Kontakt kontakt;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +36,11 @@ public class FriendsActivity extends Activity {
         removeBtn = findViewById(R.id.button_remove);
         editBtn = findViewById(R.id.button_edit);
         db = new Database(this);
-        showData();
+
+        listItems = new ArrayList<>();
+
+        viewData();
+        //showData();
         goToAdd();
         onEdit();
     }
@@ -56,21 +66,39 @@ public class FriendsActivity extends Activity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Toast.makeText(FriendsActivity.this, "FriendsList clicked", Toast.LENGTH_SHORT).show();
+                EditText editText = findViewById(R.id.editText_telephone);
             }
         });
     }
 
 
+    private void viewData(){
+        Cursor cursor = db.viewDataFriends();
+
+        if(cursor.getCount() == 0){
+            Toast.makeText(FriendsActivity.this, "No data to show", Toast.LENGTH_SHORT).show();
+        } else {
+            int i = 0;
+            while (cursor.moveToNext()){
+
+                kontakt = new Kontakt(cursor.getLong(0), cursor.getString(1), cursor.getString(2));
+                listItems.add(kontakt);
+                i++;
+            }
+            CustomAdapter adapter = new CustomAdapter(this, R.layout.list_adapter, listItems);
+            listView.setAdapter(adapter);
+        }
+    }
+
+
     public void showData(){
+
         List<Kontakt> kontakts = db.finnAlleKontakter();
-
-
         ArrayList<String> navn = new ArrayList<>();
         ArrayList<String> tlf = new ArrayList<>();
 
         for (Kontakt kontakt : kontakts){
             navn.add(kontakt.getNavn());
-
         }
         /*
         String navnet = "";
@@ -86,7 +114,9 @@ public class FriendsActivity extends Activity {
 
 
 
+
         ArrayAdapter <String> itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,navn);
+
 
         //ArrayAdapter <Kontakt> itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, kontakts);
         listView.setAdapter(itemsAdapter);

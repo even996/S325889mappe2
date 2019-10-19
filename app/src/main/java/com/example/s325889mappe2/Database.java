@@ -97,6 +97,21 @@ public class Database extends SQLiteOpenHelper {
     }
 
 
+    public Cursor viewDataFriends(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "Select * from " + FRIENDS_TABLE;
+        Cursor data = db.rawQuery(query, null);
+        return data;
+    }
+
+    public Cursor viewDataResturant(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "Select * from " + RESTURANT_TABLE;
+        Cursor data = db.rawQuery(query, null);
+        return data;
+    }
+
+
 
     public List<Kontakt> finnAlleKontakter(){
         List<Kontakt> kontaktList = new ArrayList<>();
@@ -113,6 +128,7 @@ public class Database extends SQLiteOpenHelper {
         }
         return kontaktList;
     }
+
 
 
     public List<Restaurant> finnAlleResturant(){

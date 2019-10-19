@@ -17,11 +17,35 @@
       />
 
 
+  <RelativeLayout
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content">
+
+  <TextView
+      android:layout_width="180dp"
+      android:layout_marginTop="10dp"
+      android:layout_height="30dp"
+      android:text="NAME:"
+      android:textStyle="bold"
+      android:textSize="20sp"
+      />
+  <TextView
+      android:layout_marginStart="180dp"
+      android:layout_width="180dp"
+      android:layout_marginTop="10dp"
+      android:layout_height="30dp"
+      android:text="TLEFONE:"
+      android:textStyle="bold"
+      android:textSize="20sp"
+      />
+</RelativeLayout>
+
+
   <ListView
       android:id="@+id/listView_resturante"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_marginTop="50dp"
+      android:layout_marginTop="10dp"
       />
 
   <RelativeLayout

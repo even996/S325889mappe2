@@ -12,6 +12,8 @@ public class Kontakt {
     }
 
 
+
+
     public long getID() {
         return ID;
     }

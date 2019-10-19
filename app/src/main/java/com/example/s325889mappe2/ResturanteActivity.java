@@ -2,6 +2,7 @@ package com.example.s325889mappe2;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,6 +19,9 @@ public class ResturanteActivity extends Activity {
     private ListView listView;
 
     private Button addBtn, removeBtn, editBtn;
+    private ArrayList<Restaurant> listItems;
+
+
 
     private Database db;
 
@@ -29,11 +33,13 @@ public class ResturanteActivity extends Activity {
         addBtn = findViewById(R.id.button_add);
         removeBtn = findViewById(R.id.button_remove);
         editBtn = findViewById(R.id.button_edit);
+        listItems = new ArrayList<>();
         db = new Database(this);
         showData();
         goToAdd();
         onEdit();
     }
+
 
 
     public void goToAdd(){
