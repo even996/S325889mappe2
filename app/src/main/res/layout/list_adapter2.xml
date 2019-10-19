@@ -11,10 +11,10 @@
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     >
-
+    
 
     <TextView
-        android:id="@+id/textView_name"
+        android:id="@+id/textView_name_resturante"
         android:layout_width="180dp"
         android:layout_height="match_parent"
         android:layout_marginStart="10dp"
@@ -22,7 +22,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/textView_telefon"
+        android:id="@+id/textView_telefon_resturante"
         android:layout_marginStart="180dp"
         android:layout_width="170dp"
         android:layout_height="match_parent"

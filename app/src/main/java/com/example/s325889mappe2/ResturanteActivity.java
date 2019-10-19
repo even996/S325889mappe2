@@ -20,6 +20,8 @@ public class ResturanteActivity extends Activity {
 
     private Button addBtn, removeBtn, editBtn;
     private ArrayList<Restaurant> listItems;
+    ArrayAdapter arrayAdapter;
+    Restaurant restaurant;
 
 
 
@@ -35,9 +37,30 @@ public class ResturanteActivity extends Activity {
         editBtn = findViewById(R.id.button_edit);
         listItems = new ArrayList<>();
         db = new Database(this);
-        showData();
+        listItems = new ArrayList<>();
+        viewData();
+       // showData();
         goToAdd();
         onEdit();
+    }
+
+    private void viewData(){
+        Cursor cursor = db.viewDataResturant();
+
+        if(cursor.getCount() == 0){
+            Toast.makeText(ResturanteActivity.this, "No data to show", Toast.LENGTH_SHORT).show();
+        } else {
+            int i = 0;
+            while (cursor.moveToNext()){
+
+                restaurant = new Restaurant(cursor.getLong(0), cursor.getString(1), cursor.getString(2),
+                        cursor.getString(3), cursor.getString(4));
+                listItems.add(restaurant);
+                i++;
+            }
+            CustomAdapter2 adapter = new CustomAdapter2(this, R.layout.list_adapter2, listItems);
+            listView.setAdapter(adapter);
+        }
     }
 
 
