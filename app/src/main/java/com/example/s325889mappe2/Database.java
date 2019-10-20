@@ -14,7 +14,7 @@ import java.util.List;
 public class Database extends SQLiteOpenHelper {
 
 
-    public static final String DATABASE_NAME = "DATABASE.db";
+    public static final String DATABASE_NAME = "DATABASE2.db";
     public static final String RESTURANT_TABLE = "Resturant_table";
     public static final String FRIENDS_TABLE = "Friends_table";
     public static final String TABLE_NAME = "Order_table";
@@ -132,11 +132,44 @@ public class Database extends SQLiteOpenHelper {
                 " AND " + FRIENDS_COL_3 + " = '" + oldTlf + "'";
 
 
-        System.out.println(query2);
 
         db.execSQL(query);
         db.execSQL(query2);
     }
+
+    public void updateTableResturante(long id, String newName, String oldName, String newTlf, String oldTlf,
+                                      String newAdress, String oldAdress, String newType, String oldType){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String query = "UPDATE " + RESTURANT_TABLE + " SET " + REST_COL_2 +
+                " = '" + newName + "' WHERE " + REST_COL_1 + " = '" + id + "'" +
+                " AND " + REST_COL_2 + " = '" + oldName + "'";
+
+        String query3 = "UPDATE " + RESTURANT_TABLE + " SET " + REST_COL_3 +
+                " = '" + newAdress + "' WHERE " + REST_COL_1 + " = '" + id + "'" +
+                " AND " + REST_COL_3 + " = '" + oldAdress + "'";
+
+        String query2 = "UPDATE " + RESTURANT_TABLE + " SET " + REST_COL_4 +
+                " = '" + newTlf + "' WHERE " + REST_COL_1 + " = '" + id + "'" +
+                " AND " + REST_COL_4 + " = '" + oldTlf + "'";
+
+        String query4 = "UPDATE " + RESTURANT_TABLE + " SET " + REST_COL_5 +
+                " = '" + newType + "' WHERE " + REST_COL_1 + " = '" + id + "'" +
+                " AND " + REST_COL_5 + " = '" + oldType + "'";
+
+        System.out.println(query);
+        System.out.println(query2);
+        System.out.println(query3);
+        System.out.println(query4);
+
+
+
+        db.execSQL(query); // funke
+        db.execSQL(query2); // virker ikkke
+        db.execSQL(query3); //virker ikke?
+        db.execSQL(query4); // funke
+    }
+
 
 
 

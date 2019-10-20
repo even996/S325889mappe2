@@ -46,7 +46,6 @@ public class ResturanteActivity extends Activity {
 
     private void viewData(){
         Cursor cursor = db.viewDataResturant();
-
         if(cursor.getCount() == 0){
             Toast.makeText(ResturanteActivity.this, "No data to show", Toast.LENGTH_SHORT).show();
         } else {
@@ -61,6 +60,34 @@ public class ResturanteActivity extends Activity {
             CustomAdapter2 adapter = new CustomAdapter2(this, R.layout.list_adapter2, listItems);
             listView.setAdapter(adapter);
         }
+    }
+
+
+    public void editIntent(long id, String name, String tlf, String adress, String type){
+        Intent editIntent = new Intent(this, EditResturant.class);
+        editIntent.putExtra("ID", id);
+        editIntent.putExtra("NAME", name);
+        editIntent.putExtra("TLF", tlf);
+        editIntent.putExtra("ADRESS", adress);
+        editIntent.putExtra("TYPE", type);
+        startActivity(editIntent);
+    }
+
+    public void onEdit(){
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Toast.makeText(ResturanteActivity.this, "FriendsList clicked", Toast.LENGTH_SHORT).show();
+                Restaurant restaurant = (Restaurant) adapterView.getItemAtPosition(i);
+                long id = restaurant.getID();
+                String name = restaurant.getNavn();
+                String tlf = restaurant.getTelefonNr();
+                String adress = restaurant.getAddresse();
+                String type = restaurant.getType();
+                editIntent(id,name,tlf, adress, type);
+
+            }
+        });
     }
 
 
@@ -80,14 +107,6 @@ public class ResturanteActivity extends Activity {
         startActivity(intent);
     }
 
-    public void onEdit(){
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(ResturanteActivity.this, "Resturante Added", Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
 
 
 

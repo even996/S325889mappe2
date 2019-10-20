@@ -81,10 +81,6 @@ public class FriendsActivity extends Activity {
 
             }
         });
-
-
-
-
     }
 
 

@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class CustomAdapter2 extends ArrayAdapter {
@@ -32,11 +34,20 @@ public class CustomAdapter2 extends ArrayAdapter {
         if (restaurant != null) {
             TextView name = (TextView) convertView.findViewById(R.id.textView_name_resturante);
             TextView tlf = (TextView) convertView.findViewById(R.id.textView_telefon_resturante);
+            TextView adress = (TextView) convertView.findViewById(R.id.textView_adress_resturante);
+            TextView type = (TextView) convertView.findViewById(R.id.textView_type_resturante);
+
             if (name != null) {
                 name.setText(restaurant.getNavn());
             }
             if (tlf != null) {
                 tlf.setText(restaurant.getTelefonNr());
+            }
+            if (adress != null) {
+                adress.setText(restaurant.getAddresse());
+            }
+            if (type != null) {
+                type.setText(restaurant.getType());
             }
         }
 

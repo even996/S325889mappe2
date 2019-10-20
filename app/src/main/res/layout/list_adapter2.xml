@@ -15,7 +15,7 @@
 
     <TextView
         android:id="@+id/textView_name_resturante"
-        android:layout_width="180dp"
+        android:layout_width="90dp"
         android:layout_height="match_parent"
         android:layout_marginStart="10dp"
         android:textSize="20sp"
@@ -23,8 +23,22 @@
 
     <TextView
         android:id="@+id/textView_telefon_resturante"
-        android:layout_marginStart="180dp"
-        android:layout_width="170dp"
+        android:layout_marginStart="85dp"
+        android:layout_width="90dp"
+        android:layout_height="match_parent"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/textView_adress_resturante"
+        android:layout_marginStart="200dp"
+        android:layout_width="90dp"
+        android:layout_height="match_parent"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/textView_type_resturante"
+        android:layout_marginStart="290dp"
+        android:layout_width="90dp"
         android:layout_height="match_parent"
         android:textSize="20sp"
         android:textStyle="bold" />

@@ -42,9 +42,6 @@ public class EditFriends extends Activity {
 
     }
 
-
-
-
     public void Edit(){
         btnEdit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,10 +51,6 @@ public class EditFriends extends Activity {
             }
         });
     }
-
-
-
-
 
 
     public void Back(){
