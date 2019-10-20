@@ -1,6 +1,7 @@
 package com.example.s325889mappe2;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,7 +13,7 @@ public class FriendAddActivity extends Activity {
 
 
     private EditText name, telefone;
-    private Button addBtn, removeBtn, editBtn;
+    private Button addBtn, backBtn;
     private Database db;
 
 
@@ -24,10 +25,10 @@ public class FriendAddActivity extends Activity {
         name = findViewById(R.id.editText_name);
         telefone = findViewById(R.id.editText_telephone);
         addBtn = findViewById(R.id.button_add);
-        removeBtn = findViewById(R.id.button_remove);
-        editBtn = findViewById(R.id.button_edit);
+        backBtn = findViewById(R.id.button_back);
         db = new Database(this);
         Add();
+        Back();
 
     }
 
@@ -41,6 +42,24 @@ public class FriendAddActivity extends Activity {
             }
         });
     }
+
+
+    public void Back(){
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                IntentBack();
+            }
+        });
+    }
+
+    public void IntentBack(){
+        Intent intent = new Intent(this, FriendsActivity.class);
+        startActivity(intent);
+
+
+    }
+
 
 
 

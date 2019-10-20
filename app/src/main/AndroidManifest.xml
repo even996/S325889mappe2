@@ -21,6 +21,7 @@
         <activity android:name=".OrdersActivity"></activity>
         <activity android:name=".ResturantAddActivity"></activity>
         <activity android:name=".FriendAddActivity"></activity>
+        <activity android:name=".EditFriends"></activity>
     </application>
 
 </manifest>

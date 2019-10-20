@@ -76,6 +76,13 @@ public class Database extends SQLiteOpenHelper {
 //        getDatabase(name);
     }
 
+    public void removeData(long id_inn){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(FRIENDS_TABLE, REST_COL_1 + " =? ", new String[] {Long.toString(id_inn)});
+        db.close();
+
+    }
+
     public void getDatabase(String name){
         Cursor data = this.getResturantData();
         ArrayList<String> listData = new ArrayList<>();
@@ -109,6 +116,13 @@ public class Database extends SQLiteOpenHelper {
         String query = "Select * from " + RESTURANT_TABLE;
         Cursor data = db.rawQuery(query, null);
         return data;
+    }
+
+    public void updateTable(long id, String name, String tlf){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "UPDATE " + FRIENDS_TABLE + " SET " + FRIENDS_COL_2 +
+                " = " + name + " AND " + FRIENDS_COL_3 + " = " + tlf + "' WHERE " + FRIENDS_COL_1 + " = '" + id;
+        db.execSQL(query);
     }
 
 
