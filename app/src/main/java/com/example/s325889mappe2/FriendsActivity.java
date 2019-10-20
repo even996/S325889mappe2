@@ -18,7 +18,7 @@ public class FriendsActivity extends Activity {
 
 
     private ListView listView;
-    private Button addBtn, removeBtn, editBtn;
+    private Button addBtn, backBtn;
     private Database db;
 
     private ArrayList<Kontakt> listItems;
@@ -32,8 +32,7 @@ public class FriendsActivity extends Activity {
         setContentView(R.layout.activity_friends);
         listView = findViewById(R.id.listView_resturante);
         addBtn = findViewById(R.id.button_add);
-        removeBtn = findViewById(R.id.button_remove);
-        editBtn = findViewById(R.id.button_edit);
+        backBtn = findViewById(R.id.button_back);
         db = new Database(this);
 
         listItems = new ArrayList<>();
@@ -42,7 +41,24 @@ public class FriendsActivity extends Activity {
         //showData();
         goToAdd();
         onEdit();
+        onBack();
     }
+
+
+    public void onBack(){
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                backIntent();
+            }
+        });
+    }
+
+    public void backIntent(){
+        Intent homeIntent = new Intent(this, MainActivity.class);
+        startActivity(homeIntent);
+    }
+
 
 
     public void goToAdd(){

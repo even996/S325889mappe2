@@ -78,12 +78,18 @@ public class Database extends SQLiteOpenHelper {
 //        getDatabase(name);
     }
 
-    public void removeData(long id_inn){
+    public void removeDataFriend(long id_inn){
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(FRIENDS_TABLE, REST_COL_1 + " =? ", new String[] {Long.toString(id_inn)});
         db.close();
-
     }
+
+    public void removeDataResturante(long id_inn){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(RESTURANT_TABLE, REST_COL_1 + " =? ", new String[] {Long.toString(id_inn)});
+        db.close();
+    }
+
 
     public void getDatabase(String name){
         Cursor data = this.getResturantData();

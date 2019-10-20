@@ -12,7 +12,7 @@ public class EditFriends extends Activity {
 
 
     EditText editName, editTlf;
-    Button btnBack, btnEdit;
+    Button btnBack, btnEdit, btnRemove;
     Database db;
     Long ID;
     String name;
@@ -26,6 +26,7 @@ public class EditFriends extends Activity {
         editTlf= findViewById(R.id.editText_telephone);
         btnEdit= findViewById(R.id.button_edit);
         btnBack= findViewById(R.id.button_back);
+        btnRemove = findViewById(R.id.button_remove);
         db = new Database(this);
 
         Intent recivedIntent = getIntent();
@@ -39,6 +40,7 @@ public class EditFriends extends Activity {
 
         Edit();
         Back();
+        removeFriend();
 
     }
 
@@ -51,6 +53,17 @@ public class EditFriends extends Activity {
             }
         });
     }
+
+    public void removeFriend(){
+        btnRemove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                db.removeDataFriend(ID);
+                IntentBack();
+            }
+        });
+    }
+
 
 
     public void Back(){

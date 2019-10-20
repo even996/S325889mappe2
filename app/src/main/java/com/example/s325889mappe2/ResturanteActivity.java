@@ -18,7 +18,7 @@ public class ResturanteActivity extends Activity {
 
     private ListView listView;
 
-    private Button addBtn, removeBtn, editBtn;
+    private Button addBtn, backBtn;
     private ArrayList<Restaurant> listItems;
     ArrayAdapter arrayAdapter;
     Restaurant restaurant;
@@ -33,13 +33,13 @@ public class ResturanteActivity extends Activity {
         setContentView(R.layout.activity_resturante);
         listView = findViewById(R.id.listView_resturante);
         addBtn = findViewById(R.id.button_add);
-        removeBtn = findViewById(R.id.button_remove);
-        editBtn = findViewById(R.id.button_edit);
+        backBtn = findViewById(R.id.button_back);
         listItems = new ArrayList<>();
         db = new Database(this);
         listItems = new ArrayList<>();
         viewData();
        // showData();
+        onBack();
         goToAdd();
         onEdit();
     }
@@ -60,6 +60,20 @@ public class ResturanteActivity extends Activity {
             CustomAdapter2 adapter = new CustomAdapter2(this, R.layout.list_adapter2, listItems);
             listView.setAdapter(adapter);
         }
+    }
+
+    public void onBack(){
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                backIntent();
+            }
+        });
+    }
+
+    public void backIntent(){
+        Intent homeIntent = new Intent(this, MainActivity.class);
+        startActivity(homeIntent);
     }
 
 
