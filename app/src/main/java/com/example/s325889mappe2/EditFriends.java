@@ -50,7 +50,7 @@ public class EditFriends extends Activity {
             @Override
             public void onClick(View view) {
                 Toast.makeText(EditFriends.this, "Venner Editet", Toast.LENGTH_SHORT).show();
-                db.addDataFriend(editName.getText().toString(), editTlf.getText().toString());
+                db.updateTable(ID, editName.getText().toString(), name, editTlf.getText().toString(), telefon);
             }
         });
     }

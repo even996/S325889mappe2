@@ -5,7 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -118,11 +120,22 @@ public class Database extends SQLiteOpenHelper {
         return data;
     }
 
-    public void updateTable(long id, String name, String tlf){
+    public void updateTable(long id, String newName, String oldName, String newTlf, String oldTlf){
         SQLiteDatabase db = this.getWritableDatabase();
+
         String query = "UPDATE " + FRIENDS_TABLE + " SET " + FRIENDS_COL_2 +
-                " = " + name + " AND " + FRIENDS_COL_3 + " = " + tlf + "' WHERE " + FRIENDS_COL_1 + " = '" + id;
+                " = '" + newName + "' WHERE " + FRIENDS_COL_1 + " = '" + id + "'" +
+                " AND " + FRIENDS_COL_2 + " = '" + oldName + "'";
+
+        String query2 = "UPDATE " + FRIENDS_TABLE + " SET " + FRIENDS_COL_3 +
+                " = '" + newTlf + "' WHERE " + FRIENDS_COL_1 + " = '" + id + "'" +
+                " AND " + FRIENDS_COL_3 + " = '" + oldTlf + "'";
+
+
+        System.out.println(query2);
+
         db.execSQL(query);
+        db.execSQL(query2);
     }
 
 
