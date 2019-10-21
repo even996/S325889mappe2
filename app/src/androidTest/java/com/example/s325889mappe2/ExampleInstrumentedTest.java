@@ -1,5 +1,6 @@
 package com.example.s325889mappe2;
 
+import android.app.Instrumentation;
 import android.content.Context;
 
 import androidx.test.platform.app.InstrumentationRegistry;
