@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -18,7 +19,7 @@ public class FriendsActivity extends Activity {
 
 
     private ListView listView;
-    private Button addBtn, backBtn;
+    private ImageButton addImageBtn, backImageBtn;
     private Database db;
 
     private ArrayList<Kontakt> listItems;
@@ -31,8 +32,8 @@ public class FriendsActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_friends);
         listView = findViewById(R.id.listView_resturante);
-        addBtn = findViewById(R.id.button_add);
-        backBtn = findViewById(R.id.button_back);
+        backImageBtn = findViewById(R.id.back_image_button);
+        addImageBtn = findViewById(R.id.add_image_button);
         db = new Database(this);
 
         listItems = new ArrayList<>();
@@ -46,7 +47,7 @@ public class FriendsActivity extends Activity {
 
 
     public void onBack(){
-        backBtn.setOnClickListener(new View.OnClickListener() {
+        backImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 backIntent();
@@ -62,7 +63,7 @@ public class FriendsActivity extends Activity {
 
 
     public void goToAdd(){
-        addBtn.setOnClickListener(new View.OnClickListener() {
+        addImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 nextIntent();
@@ -106,12 +107,11 @@ public class FriendsActivity extends Activity {
         if(cursor.getCount() == 0){
             Toast.makeText(FriendsActivity.this, "No data to show", Toast.LENGTH_SHORT).show();
         } else {
-            int i = 0;
+
             while (cursor.moveToNext()){
 
                 kontakt = new Kontakt(cursor.getLong(0), cursor.getString(1), cursor.getString(2));
                 listItems.add(kontakt);
-                i++;
             }
             CustomAdapter adapter = new CustomAdapter(this, R.layout.list_adapter, listItems);
             listView.setAdapter(adapter);

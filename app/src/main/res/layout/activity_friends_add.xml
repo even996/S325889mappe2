@@ -39,21 +39,23 @@
         android:layout_marginStart="30dp"
         >
 
-        <Button
-            android:id="@+id/button_add"
+        <ImageButton
             android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:text="Add" />
+            android:layout_height="100dp"
+            android:id="@+id/add_image_button"
+            android:background="@drawable/add"
+            android:alpha="0.8"
+            />
 
 
-
-
-        <Button
-            android:id="@+id/button_back"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
+        <ImageButton
             android:layout_marginStart="200dp"
-            android:text="BACK" />
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/back_image_button"
+            android:background="@drawable/backarrow"
+            android:alpha="0.8"
+            />
 
     </RelativeLayout>
 

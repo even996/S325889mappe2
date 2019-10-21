@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -18,7 +19,7 @@ public class ResturanteActivity extends Activity {
 
     private ListView listView;
 
-    private Button addBtn, backBtn;
+    private ImageButton addImageBtn, backImageBtn;
     private ArrayList<Restaurant> listItems;
     ArrayAdapter arrayAdapter;
     Restaurant restaurant;
@@ -32,8 +33,8 @@ public class ResturanteActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_resturante);
         listView = findViewById(R.id.listView_resturante);
-        addBtn = findViewById(R.id.button_add);
-        backBtn = findViewById(R.id.button_back);
+        backImageBtn = findViewById(R.id.back_image_button);
+        addImageBtn = findViewById(R.id.add_image_button);
         listItems = new ArrayList<>();
         db = new Database(this);
         listItems = new ArrayList<>();
@@ -49,13 +50,13 @@ public class ResturanteActivity extends Activity {
         if(cursor.getCount() == 0){
             Toast.makeText(ResturanteActivity.this, "No data to show", Toast.LENGTH_SHORT).show();
         } else {
-            int i = 0;
+
             while (cursor.moveToNext()){
 
                 restaurant = new Restaurant(cursor.getLong(0), cursor.getString(1), cursor.getString(2),
                         cursor.getString(3), cursor.getString(4));
                 listItems.add(restaurant);
-                i++;
+
             }
             CustomAdapter2 adapter = new CustomAdapter2(this, R.layout.list_adapter2, listItems);
             listView.setAdapter(adapter);
@@ -63,7 +64,7 @@ public class ResturanteActivity extends Activity {
     }
 
     public void onBack(){
-        backBtn.setOnClickListener(new View.OnClickListener() {
+        backImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 backIntent();
@@ -107,7 +108,7 @@ public class ResturanteActivity extends Activity {
 
 
     public void goToAdd(){
-        addBtn.setOnClickListener(new View.OnClickListener() {
+        addImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 nextIntent();

@@ -3,10 +3,20 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
-    android:gravity="center"
+    android:background="@drawable/main"
+
 
     >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="APP NAME"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        />
 
     <Button
         android:id="@+id/button_resturante"
@@ -16,6 +26,8 @@
         android:text="Resturante"
         android:textSize="30dp"
         android:layout_marginBottom="30dp"
+        android:background="@drawable/button_style"
+        android:layout_marginTop="200dp"
         />
 
     <Button
@@ -26,6 +38,8 @@
         android:text="Venner"
         android:textSize="30dp"
         android:layout_marginBottom="30dp"
+        android:background="@drawable/button_style"
+
         />
 
     <Button
@@ -35,6 +49,8 @@
         android:layout_height="wrap_content"
         android:text="Bestilling"
         android:textSize="30dp"
+        android:background="@drawable/button_style"
+
 
         />
 </LinearLayout>

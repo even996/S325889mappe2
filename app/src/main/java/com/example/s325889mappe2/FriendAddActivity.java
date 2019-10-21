@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 
@@ -13,7 +14,7 @@ public class FriendAddActivity extends Activity {
 
 
     private EditText name, telefone;
-    private Button addBtn, backBtn;
+    private ImageButton addImageBtn, backImageBtn;
     private Database db;
 
 
@@ -24,8 +25,8 @@ public class FriendAddActivity extends Activity {
         setContentView(R.layout.activity_friends_add);
         name = findViewById(R.id.editText_name);
         telefone = findViewById(R.id.editText_telephone);
-        addBtn = findViewById(R.id.button_add);
-        backBtn = findViewById(R.id.button_back);
+        backImageBtn = findViewById(R.id.back_image_button);
+        addImageBtn = findViewById(R.id.add_image_button);
         db = new Database(this);
         Add();
         Back();
@@ -34,7 +35,7 @@ public class FriendAddActivity extends Activity {
 
 
     public void Add(){
-        addBtn.setOnClickListener(new View.OnClickListener() {
+        addImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(FriendAddActivity.this, "Venner Added", Toast.LENGTH_SHORT).show();
@@ -45,7 +46,7 @@ public class FriendAddActivity extends Activity {
 
 
     public void Back(){
-        backBtn.setOnClickListener(new View.OnClickListener() {
+        backImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 IntentBack();

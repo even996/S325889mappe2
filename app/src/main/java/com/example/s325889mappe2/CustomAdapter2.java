@@ -33,22 +33,24 @@ public class CustomAdapter2 extends ArrayAdapter {
         Restaurant restaurant = restaurants.get(position);
         if (restaurant != null) {
             TextView name = (TextView) convertView.findViewById(R.id.textView_name_resturante);
-            TextView tlf = (TextView) convertView.findViewById(R.id.textView_telefon_resturante);
+            //TextView tlf = (TextView) convertView.findViewById(R.id.textView_telefon_resturante);
             TextView adress = (TextView) convertView.findViewById(R.id.textView_adress_resturante);
-            TextView type = (TextView) convertView.findViewById(R.id.textView_type_resturante);
+            //TextView type = (TextView) convertView.findViewById(R.id.textView_type_resturante);
 
             if (name != null) {
                 name.setText(restaurant.getNavn());
             }
-            if (tlf != null) {
+          /*  if (tlf != null) {
                 tlf.setText(restaurant.getTelefonNr());
             }
+             if (type != null) {
+                type.setText(restaurant.getType());
+            }
+           */
             if (adress != null) {
                 adress.setText(restaurant.getAddresse());
             }
-            if (type != null) {
-                type.setText(restaurant.getType());
-            }
+
         }
 
         return convertView;

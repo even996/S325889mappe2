@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@drawable/friends_background"
     >
 
   <TextView
@@ -11,8 +11,11 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:text="Friends"
-      android:textSize="30sp"
+      android:textSize="40sp"
+      android:textStyle="bold"
+      android:textColor="#FFFFFF"
       android:textAlignment="center"
+
       />
 
   <RelativeLayout
@@ -21,19 +24,22 @@
     <TextView
         android:layout_width="180dp"
         android:layout_marginTop="10dp"
+        android:layout_marginStart="30dp"
         android:layout_height="30dp"
         android:text="NAME:"
         android:textStyle="bold"
         android:textSize="20sp"
+        android:textColor="#FFFFFF"
         />
     <TextView
-        android:layout_marginStart="180dp"
+        android:layout_marginStart="220dp"
         android:layout_width="180dp"
         android:layout_marginTop="10dp"
         android:layout_height="30dp"
         android:text="TELEFONE:"
         android:textStyle="bold"
         android:textSize="20sp"
+        android:textColor="#FFFFFF"
         />
   </RelativeLayout>
 
@@ -43,6 +49,7 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_marginTop="10dp"
+
       />
 
   <RelativeLayout
@@ -51,20 +58,29 @@
       android:layout_marginStart="30dp"
       >
 
-  <Button
-      android:id="@+id/button_add"
-      android:layout_width="100dp"
-      android:layout_height="wrap_content"
-      android:text="Add" />
+
+
+    <ImageButton
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/add_image_button"
+        android:background="@drawable/add"
+        android:alpha="0.8"
+        />
+
+
+    <ImageButton
+        android:layout_marginStart="200dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/back_image_button"
+        android:background="@drawable/backarrow"
+        android:alpha="0.8"
+
+        />
 
 
 
-  <Button
-      android:id="@+id/button_back"
-      android:layout_width="100dp"
-      android:layout_height="wrap_content"
-      android:layout_marginStart="200dp"
-      android:text="Back" />
 
   </RelativeLayout>
 

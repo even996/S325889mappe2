@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 
@@ -13,7 +14,7 @@ public class ResturantAddActivity extends Activity {
 
 
     private EditText name, adress, telefone, type;
-    private Button addBtn, backBtn;
+    private ImageButton addImageBtn, backImageBtn;
     private Database db;
 
 
@@ -26,8 +27,8 @@ public class ResturantAddActivity extends Activity {
         adress = findViewById(R.id.editText_adress);
         telefone = findViewById(R.id.editText_telephone);
         type = findViewById(R.id.editText_type);
-        addBtn = findViewById(R.id.button_add);
-        backBtn = findViewById(R.id.button_back);
+        backImageBtn = findViewById(R.id.back_image_button);
+        addImageBtn = findViewById(R.id.add_image_button);
         db = new Database(this);
         Back();
         Add();
@@ -35,7 +36,7 @@ public class ResturantAddActivity extends Activity {
     }
 
     public void Back(){
-        backBtn.setOnClickListener(new View.OnClickListener() {
+        backImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 IntentBack();
@@ -46,13 +47,11 @@ public class ResturantAddActivity extends Activity {
     public void IntentBack(){
         Intent intent = new Intent(this, ResturanteActivity.class);
         startActivity(intent);
-
-
     }
 
 
     public void Add(){
-        addBtn.setOnClickListener(new View.OnClickListener() {
+        addImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(ResturantAddActivity.this, "Resturante Added", Toast.LENGTH_SHORT).show();

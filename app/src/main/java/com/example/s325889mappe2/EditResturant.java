@@ -6,13 +6,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 public class EditResturant extends Activity {
 
 
     EditText editName, editTlf, editAdress, editType;
-    Button btnBack, btnEdit, btnRemove;
+    private ImageButton editImageBtn, removeImageBtn, backImageBtn;
     Database db;
     Long ID;
     String name;
@@ -28,9 +29,9 @@ public class EditResturant extends Activity {
         editTlf= findViewById(R.id.editText_res_telephone);
         editAdress= findViewById(R.id.editText_res_adress);
         editType= findViewById(R.id.editText_res_type);
-        btnEdit= findViewById(R.id.button_edit);
-        btnBack= findViewById(R.id.button_back);
-        btnRemove = findViewById(R.id.button_remove);
+        removeImageBtn = findViewById(R.id.remove_image_button);
+        backImageBtn = findViewById(R.id.back_image_button);
+        editImageBtn = findViewById(R.id.edit_image_button);
         db = new Database(this);
 
         Intent recivedIntent = getIntent();
@@ -52,7 +53,7 @@ public class EditResturant extends Activity {
     }
 
     public void EditRes(){
-        btnEdit.setOnClickListener(new View.OnClickListener() {
+        editImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(EditResturant.this, "Resturante Editet", Toast.LENGTH_SHORT).show();
@@ -64,7 +65,7 @@ public class EditResturant extends Activity {
     }
 
     public void removeFriend(){
-        btnRemove.setOnClickListener(new View.OnClickListener() {
+        removeImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 db.removeDataResturante(ID);
@@ -75,7 +76,7 @@ public class EditResturant extends Activity {
 
 
     public void Back(){
-        btnBack.setOnClickListener(new View.OnClickListener() {
+        backImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 IntentBack();
