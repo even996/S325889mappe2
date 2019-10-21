@@ -45,6 +45,10 @@ public class EditFriends extends Activity {
 
     }
 
+    public void somethign(){
+        System.out.println("oaoos");
+    }
+
     public void Edit(){
         editImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
