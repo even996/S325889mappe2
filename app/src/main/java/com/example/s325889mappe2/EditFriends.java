@@ -13,7 +13,7 @@ public class EditFriends extends Activity {
 
 
     EditText editName, editTlf;
-    private ImageButton editImageBtn, removeImageBtn, backImageBtn;
+    private ImageButton editImageBtn, removeImageBtn;
     Database db;
     Long ID;
     String name;
@@ -26,7 +26,6 @@ public class EditFriends extends Activity {
         editName = findViewById(R.id.editText_name);
         editTlf= findViewById(R.id.editText_telephone);
         removeImageBtn = findViewById(R.id.remove_image_button);
-        backImageBtn = findViewById(R.id.back_image_button);
         editImageBtn = findViewById(R.id.edit_image_button);
         db = new Database(this);
 
@@ -34,19 +33,17 @@ public class EditFriends extends Activity {
         ID= recivedIntent.getLongExtra("ID", 1);
         name= recivedIntent.getStringExtra("NAME");
         telefon= recivedIntent.getStringExtra("TLF");
-
-
         editName.setText(name);
         editTlf.setText(telefon);
 
         Edit();
-        Back();
         removeFriend();
 
     }
 
-    public void somethign(){
-        System.out.println("oaoos");
+    @Override
+    public void onBackPressed() {
+       intentBack();
     }
 
     public void Edit(){
@@ -64,25 +61,19 @@ public class EditFriends extends Activity {
             @Override
             public void onClick(View view) {
                 db.removeDataFriend(ID);
-                IntentBack();
+                intentBack();
+                finish();
             }
         });
     }
 
 
 
-    public void Back(){
-        backImageBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                IntentBack();
-            }
-        });
-    }
 
-    public void IntentBack(){
+    public void intentBack(){
         Intent intent = new Intent(this, FriendsActivity.class);
         startActivity(intent);
+        finish();
 
 
     }

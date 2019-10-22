@@ -14,7 +14,7 @@ public class ResturantAddActivity extends Activity {
 
 
     private EditText name, adress, telefone, type;
-    private ImageButton addImageBtn, backImageBtn;
+    private ImageButton addImageBtn;
     private Database db;
 
 
@@ -27,22 +27,21 @@ public class ResturantAddActivity extends Activity {
         adress = findViewById(R.id.editText_adress);
         telefone = findViewById(R.id.editText_telephone);
         type = findViewById(R.id.editText_type);
-        backImageBtn = findViewById(R.id.back_image_button);
         addImageBtn = findViewById(R.id.add_image_button);
         db = new Database(this);
-        Back();
         Add();
 
     }
 
-    public void Back(){
-        backImageBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                IntentBack();
-            }
-        });
+
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        IntentBack();
     }
+
+
 
     public void IntentBack(){
         Intent intent = new Intent(this, ResturanteActivity.class);

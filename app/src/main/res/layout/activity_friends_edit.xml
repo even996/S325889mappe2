@@ -42,6 +42,7 @@
         <ImageButton
             android:layout_width="100dp"
             android:layout_height="100dp"
+            android:layout_marginStart="20dp"
             android:id="@+id/edit_image_button"
             android:background="@drawable/editimage"
             android:alpha="0.8"
@@ -51,19 +52,11 @@
             android:id="@+id/remove_image_button"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginStart="100dp"
+            android:layout_marginStart="170dp"
             android:background="@drawable/remove"
              />
 
-        <ImageButton
-            android:layout_marginStart="200dp"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:id="@+id/back_image_button"
-            android:background="@drawable/backarrow"
-            android:alpha="0.8"
 
-            />
 
 
 

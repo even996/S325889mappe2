@@ -14,10 +14,10 @@ import java.util.List;
 public class Database extends SQLiteOpenHelper {
 
 
-    public static final String DATABASE_NAME = "DATABASE2.db";
+    public static final String DATABASE_NAME = "DATABASE5.db";
     public static final String RESTURANT_TABLE = "Resturant_table";
     public static final String FRIENDS_TABLE = "Friends_table";
-    public static final String TABLE_NAME = "Order_table";
+    public static final String ORDER_TABLE = "Order_table";
     public static final String REST_COL_1 = "ID";
     public static final String REST_COL_2 = "NAME";
     public static final String REST_COL_3 = "ADRESS";
@@ -26,6 +26,13 @@ public class Database extends SQLiteOpenHelper {
     public static final String FRIENDS_COL_1 = "ID";
     public static final String FRIENDS_COL_2 = "NAME";
     public static final String FRIENDS_COL_3 = "TELEPHONE";
+    public static final String ORDER_COL_1 = "ID";
+    public static final String ORDER_COL_2 = "FRIENDS";
+    public static final String ORDER_COL_3 = "RESTURANT";
+    public static final String ORDER_COL_4 = "TIME";
+
+
+
 
     private static final String CREATE_TABLE = "CREATE TABLE " +
             RESTURANT_TABLE + "(" + REST_COL_1 + " INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -34,6 +41,12 @@ public class Database extends SQLiteOpenHelper {
     private static final String CREATE_TABLE2 = "CREATE TABLE " +
             FRIENDS_TABLE + "(" + FRIENDS_COL_1 + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + FRIENDS_COL_2 + " TEXT," + FRIENDS_COL_3 + " TEXT" + ")";
+
+    private static final String CREATE_TABLE3 = "CREATE TABLE " +
+            ORDER_TABLE + "(" + ORDER_COL_1 + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            + ORDER_COL_2 + " TEXT," + ORDER_COL_3 + " TEXT," + ORDER_COL_4 + " TEXT" + ")";
+
+
 
 
 
@@ -45,15 +58,21 @@ public class Database extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
+        System.out.println(CREATE_TABLE2);
+        System.out.println(CREATE_TABLE3);
+
         db.execSQL(CREATE_TABLE);
         db.execSQL(CREATE_TABLE2);
-
+        db.execSQL(CREATE_TABLE3);
     }
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("DROP TABLE IF EXISTS " + RESTURANT_TABLE);
         db.execSQL("DROP TABLE IF EXISTS " + FRIENDS_TABLE);
+        db.execSQL("DROP TABLE IF EXISTS " + ORDER_TABLE);
         onCreate(db);
     }
 
@@ -66,6 +85,16 @@ public class Database extends SQLiteOpenHelper {
         contentValues.put(REST_COL_4, telefone);
         contentValues.put(REST_COL_5, type);
         db.insert(RESTURANT_TABLE,null, contentValues);
+//        getDatabase(name);
+    }
+
+    public void addDataOrder(String name, String resturant, String time){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(ORDER_COL_2, name);
+        contentValues.put(ORDER_COL_3, resturant);
+        contentValues.put(ORDER_COL_4, time);
+        db.insert(ORDER_TABLE,null, contentValues);
 //        getDatabase(name);
     }
 
@@ -119,6 +148,14 @@ public class Database extends SQLiteOpenHelper {
         return data;
     }
 
+
+    public Cursor viewDataOrder(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "Select * from " + ORDER_TABLE;
+        Cursor data = db.rawQuery(query, null);
+        return data;
+    }
+
     public Cursor viewDataResturant(){
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "Select * from " + RESTURANT_TABLE;
@@ -136,9 +173,6 @@ public class Database extends SQLiteOpenHelper {
         String query2 = "UPDATE " + FRIENDS_TABLE + " SET " + FRIENDS_COL_3 +
                 " = '" + newTlf + "' WHERE " + FRIENDS_COL_1 + " = '" + id + "'" +
                 " AND " + FRIENDS_COL_3 + " = '" + oldTlf + "'";
-
-
-
         db.execSQL(query);
         db.execSQL(query2);
     }
@@ -163,18 +197,14 @@ public class Database extends SQLiteOpenHelper {
                 " = '" + newType + "' WHERE " + REST_COL_1 + " = '" + id + "'" +
                 " AND " + REST_COL_5 + " = '" + oldType + "'";
 
-        System.out.println(query);
-        System.out.println(query2);
-        System.out.println(query3);
-        System.out.println(query4);
-
-
-
-        db.execSQL(query); // funke
-        db.execSQL(query2); // virker ikkke
-        db.execSQL(query3); //virker ikke?
-        db.execSQL(query4); // funke
+        db.execSQL(query);
+        db.execSQL(query2);
+        db.execSQL(query3);
+        db.execSQL(query4);
     }
+
+
+    //SQL statement -->  1 setning update
 
 
 

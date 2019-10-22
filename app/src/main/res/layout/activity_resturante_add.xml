@@ -54,18 +54,11 @@
             android:id="@+id/add_image_button"
             android:background="@drawable/add"
             android:alpha="0.8"
+            android:layout_marginStart="100dp"
             />
 
 
-        <ImageButton
-            android:layout_marginStart="200dp"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:id="@+id/back_image_button"
-            android:background="@drawable/backarrow"
-            android:alpha="0.8"
 
-            />
 
 
 

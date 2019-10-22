@@ -13,7 +13,7 @@ public class EditResturant extends Activity {
 
 
     EditText editName, editTlf, editAdress, editType;
-    private ImageButton editImageBtn, removeImageBtn, backImageBtn;
+    private ImageButton editImageBtn, removeImageBtn;
     Database db;
     Long ID;
     String name;
@@ -30,7 +30,6 @@ public class EditResturant extends Activity {
         editAdress= findViewById(R.id.editText_res_adress);
         editType= findViewById(R.id.editText_res_type);
         removeImageBtn = findViewById(R.id.remove_image_button);
-        backImageBtn = findViewById(R.id.back_image_button);
         editImageBtn = findViewById(R.id.edit_image_button);
         db = new Database(this);
 
@@ -47,7 +46,6 @@ public class EditResturant extends Activity {
         editType.setText(type);
 
         EditRes();
-        Back();
         removeFriend();
 
     }
@@ -69,26 +67,22 @@ public class EditResturant extends Activity {
             @Override
             public void onClick(View view) {
                 db.removeDataResturante(ID);
-                IntentBack();
+                intentBack();
+                finish();
             }
         });
     }
 
 
-    public void Back(){
-        backImageBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                IntentBack();
-            }
-        });
+    @Override
+    public void onBackPressed() {
+        intentBack();
     }
 
-    public void IntentBack(){
+    public void intentBack(){
         Intent intent = new Intent(this, ResturanteActivity.class);
         startActivity(intent);
-
-
+        finish();
     }
 
 

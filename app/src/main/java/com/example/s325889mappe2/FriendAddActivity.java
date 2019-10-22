@@ -14,7 +14,7 @@ public class FriendAddActivity extends Activity {
 
 
     private EditText name, telefone;
-    private ImageButton addImageBtn, backImageBtn;
+    private ImageButton addImageBtn;
     private Database db;
 
 
@@ -25,11 +25,9 @@ public class FriendAddActivity extends Activity {
         setContentView(R.layout.activity_friends_add);
         name = findViewById(R.id.editText_name);
         telefone = findViewById(R.id.editText_telephone);
-        backImageBtn = findViewById(R.id.back_image_button);
         addImageBtn = findViewById(R.id.add_image_button);
         db = new Database(this);
         Add();
-        Back();
 
     }
 
@@ -45,19 +43,17 @@ public class FriendAddActivity extends Activity {
     }
 
 
-    public void Back(){
-        backImageBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                IntentBack();
-            }
-        });
+    @Override
+    public void onBackPressed() {
+        IntentBack();
     }
+
+
 
     public void IntentBack(){
         Intent intent = new Intent(this, FriendsActivity.class);
         startActivity(intent);
-
+        finish();
 
     }
 

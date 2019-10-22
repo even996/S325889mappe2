@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
     public void goToResturante(){
         btnResturante.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,14 +61,18 @@ public class MainActivity extends AppCompatActivity {
             case 1:
                 Intent intent = new Intent(this, ResturanteActivity.class);
                 startActivity(intent);
+                finish();
+                //finish(); funke
                 break;
             case 2:
                 Intent intent2 = new Intent(this, FriendsActivity.class);
                 startActivity(intent2);
+                finish();
                 break;
             case 3:
                 Intent intent3 = new Intent(this, OrdersActivity.class);
                 startActivity(intent3);
+                finish();
                 break;
             default:
                 break;

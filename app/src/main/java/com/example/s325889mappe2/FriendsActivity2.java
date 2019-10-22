@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -15,11 +14,10 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FriendsActivity extends Activity {
+public class FriendsActivity2 extends Activity {
 
 
     private ListView listView;
-    private ImageButton addImageBtn;
     private Database db;
 
     private ArrayList<Kontakt> listItems;
@@ -30,17 +28,15 @@ public class FriendsActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_friends);
+        setContentView(R.layout.activity_friends2);
         listView = findViewById(R.id.listView_resturante);
-        addImageBtn = findViewById(R.id.add_image_button);
         db = new Database(this);
 
         listItems = new ArrayList<>();
 
         viewData();
         //showData();
-        goToAdd();
-        onEdit();
+        onSelect();
     }
 
 
@@ -49,49 +45,37 @@ public class FriendsActivity extends Activity {
         backIntent();
     }
 
-
     public void backIntent(){
-        Intent homeIntent = new Intent(this, MainActivity.class);
+        Intent homeIntent = new Intent(this, OrdersActivity.class);
         startActivity(homeIntent);
         finish();
     }
 
 
 
-    public void goToAdd(){
-        addImageBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                nextIntent();
-            }
-        });
-    }
 
     public void nextIntent(){
         Intent intent = new Intent(this, FriendAddActivity.class);
         startActivity(intent);
-        finish();
     }
 
-    public void editIntent(long id, String name, String tlf){
-        Intent editIntent = new Intent(this, EditFriends.class);
-        editIntent.putExtra("ID", id);
-        editIntent.putExtra("NAME", name);
-        editIntent.putExtra("TLF", tlf);
-        startActivity(editIntent);
-        finish();
+    public void selectIntent(String friend){
+        Intent orderIntent = new Intent(this, ResturanteActivity2.class);
+        orderIntent.putExtra("NAME", friend);
+        startActivity(orderIntent);
+
     }
 
-    public void onEdit(){
+
+    public void onSelect(){
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(FriendsActivity.this, "FriendsList clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(FriendsActivity2.this, "FriendsList clicked", Toast.LENGTH_SHORT).show();
                 Kontakt kontakt= (Kontakt) adapterView.getItemAtPosition(i);
                 long id = kontakt.getID();
                 String name = kontakt.getNavn();
-                String tlf = kontakt.getTelefon();
-                editIntent(id,name,tlf);
+                selectIntent(name);
 
             }
         });
@@ -102,7 +86,7 @@ public class FriendsActivity extends Activity {
         Cursor cursor = db.viewDataFriends();
 
         if(cursor.getCount() == 0){
-            Toast.makeText(FriendsActivity.this, "No data to show", Toast.LENGTH_SHORT).show();
+            Toast.makeText(FriendsActivity2.this, "No data to show", Toast.LENGTH_SHORT).show();
         } else {
 
             while (cursor.moveToNext()){
@@ -115,38 +99,6 @@ public class FriendsActivity extends Activity {
         }
     }
 
-
-    public void showData(){
-
-        List<Kontakt> kontakts = db.finnAlleKontakter();
-        ArrayList<String> navn = new ArrayList<>();
-        ArrayList<String> tlf = new ArrayList<>();
-
-        for (Kontakt kontakt : kontakts){
-            navn.add(kontakt.getNavn());
-        }
-        /*
-        String navnet = "";
-        for (Kontakt kontakt : kontakts){
-            navnet += kontakt.getNavn();
-            navnet += " ";
-            navnet += kontakt.getTelefon();
-            navnet += "\n";
-        }
-        navn.add(navnet);
-
-         */
-
-
-
-
-        ArrayAdapter <String> itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,navn);
-
-
-        //ArrayAdapter <Kontakt> itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, kontakts);
-        listView.setAdapter(itemsAdapter);
-
-    }
 
 
 
