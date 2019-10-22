@@ -19,10 +19,14 @@ public class FriendsActivity2 extends Activity {
 
     private ListView listView;
     private Database db;
+    ImageButton buttonNext;
 
     private ArrayList<Kontakt> listItems;
     ArrayAdapter arrayAdapter;
     Kontakt kontakt;
+    private int count= 0;
+    private String name="";
+
 
 
     @Override
@@ -33,10 +37,13 @@ public class FriendsActivity2 extends Activity {
         db = new Database(this);
 
         listItems = new ArrayList<>();
+        buttonNext= findViewById(R.id.add_image_button);
+
 
         viewData();
         //showData();
         onSelect();
+        next();
     }
 
 
@@ -51,18 +58,22 @@ public class FriendsActivity2 extends Activity {
         finish();
     }
 
-
-
-
-    public void nextIntent(){
-        Intent intent = new Intent(this, FriendAddActivity.class);
-        startActivity(intent);
+    public void next(){
+        buttonNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nextIntent(name);
+            }
+        });
     }
 
-    public void selectIntent(String friend){
+
+    public void nextIntent(String friend){
         Intent orderIntent = new Intent(this, ResturanteActivity2.class);
         orderIntent.putExtra("NAME", friend);
+        System.out.println(friend);
         startActivity(orderIntent);
+        finish();
 
     }
 
@@ -71,11 +82,15 @@ public class FriendsActivity2 extends Activity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(FriendsActivity2.this, "FriendsList clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(FriendsActivity2.this, "Venn lagt til", Toast.LENGTH_SHORT).show();
                 Kontakt kontakt= (Kontakt) adapterView.getItemAtPosition(i);
                 long id = kontakt.getID();
-                String name = kontakt.getNavn();
-                selectIntent(name);
+                if(count != 0){
+                    name += "\n";
+                }
+                name += kontakt.getNavn();
+                System.out.println(name);
+                count++;
 
             }
         });
