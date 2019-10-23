@@ -1,6 +1,7 @@
 package com.example.s325889mappe2;
 
 import android.app.Activity;
+import android.content.ComponentName;
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -50,6 +51,16 @@ public class FriendsActivity2 extends Activity {
     @Override
     public void onBackPressed() {
         backIntent();
+    }
+
+    public void startService(View v){
+        /*Intent intent = new Intent(this, MinService.class);
+        this.startService(intent);
+
+         */
+        Intent intent = new Intent();
+        intent.setAction("com.example.servicebroadcast.mittbroadcast");
+        sendBroadcast(intent);
     }
 
     public void backIntent(){

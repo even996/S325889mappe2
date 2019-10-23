@@ -2,10 +2,18 @@ package com.example.s325889mappe2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,12 +28,45 @@ public class MainActivity extends AppCompatActivity {
         btnResturante = findViewById(R.id.button_resturante);
         btnFriends = findViewById(R.id.button_venner);
         btnOrder = findViewById(R.id.nutton_bestilling);
+
+        Toolbar myToolBar = (Toolbar)findViewById(R.id.mintoolbar);
+
+        myToolBar.inflateMenu(R.menu.menu_hoved);
+        setActionBar(myToolBar);
         goToResturante();
         goToOrders();
         goToFriends();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_hoved, menu);
+        return true;
+    }
 
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        switch (item.getItemId()){
+            case R.id.on_notification:
+                Intent intent = new Intent();
+                intent.setAction("com.example.servicebroadcast.mittbroadcast");
+                sendBroadcast(intent);
+                break;
+            case R.id.off_notification:
+                Intent i = new Intent(this, MinService.class);
+                PendingIntent pInent = PendingIntent.getService(this, 0 ,i,0);
+                AlarmManager alarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                if(alarm != null){
+                    alarm.cancel(pInent);
+                }
+                break;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+        return true;
+    }
 
     public void goToResturante(){
         btnResturante.setOnClickListener(new View.OnClickListener() {
