@@ -52,21 +52,16 @@
 
       />
 
-  <RelativeLayout
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_marginStart="30dp"
-      >
 
 
 
     <ImageButton
+        android:layout_marginTop="30dp"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="220dp"
         android:id="@+id/add_image_button"
         android:background="@drawable/add"
-        android:alpha="0.8"
         />
 
 
@@ -75,7 +70,6 @@
 
 
 
-  </RelativeLayout>
 
 
 </LinearLayout>

@@ -13,11 +13,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnResturante, btnFriends, btnOrder;
+    private ImageButton friendsImageBtn, resturantImageBtn, orderImageBtn;
     private Database dataBase;
 
     @Override
@@ -25,9 +26,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         dataBase = new Database(this);
-        btnResturante = findViewById(R.id.button_resturante);
-        btnFriends = findViewById(R.id.button_venner);
-        btnOrder = findViewById(R.id.nutton_bestilling);
+        friendsImageBtn = findViewById(R.id.friends_image_button);
+        resturantImageBtn = findViewById(R.id.resturant_imagae_button);
+        orderImageBtn = findViewById(R.id.order_image_button);
 
         Toolbar myToolBar = (Toolbar)findViewById(R.id.mintoolbar);
 
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToResturante(){
-        btnResturante.setOnClickListener(new View.OnClickListener() {
+        resturantImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 nextIntent(1);
@@ -78,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToFriends(){
-        btnFriends.setOnClickListener(new View.OnClickListener() {
+        friendsImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 nextIntent(2);
@@ -87,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void goToOrders(){
-        btnOrder.setOnClickListener(new View.OnClickListener() {
+        orderImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 nextIntent(3);
