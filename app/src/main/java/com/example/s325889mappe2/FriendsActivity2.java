@@ -27,6 +27,7 @@ public class FriendsActivity2 extends Activity {
     Kontakt kontakt;
     private int count= 0;
     private String name="";
+    private String tlf="";
 
 
 
@@ -80,29 +81,40 @@ public class FriendsActivity2 extends Activity {
 
 
     public void nextIntent(String friend){
+        int counter = 0;
+        for (Kontakt kontakt : selectedContacts){
+            if (counter != 0) {
+                name += "\n";
+                tlf += "\n";
+            }
+            counter++;
+            tlf += kontakt.getTelefon();
+            name += kontakt.getNavn();
+        }
         Intent orderIntent = new Intent(this, ResturanteActivity2.class);
-        orderIntent.putExtra("NAME", friend);
-        System.out.println(friend);
+        orderIntent.putExtra("NAME", name);
+        orderIntent.putExtra("TLF",tlf);
+        System.out.println(name);
         startActivity(orderIntent);
         finish();
 
     }
 
-
+    ArrayList<Kontakt> selectedContacts = new ArrayList();
     public void onSelect(){
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(FriendsActivity2.this, "Venn lagt til", Toast.LENGTH_SHORT).show();
-                Kontakt kontakt= (Kontakt) adapterView.getItemAtPosition(i);
-                long id = kontakt.getID();
-                if(count != 0){
-                    name += "\n";
+                Kontakt kontakt = (Kontakt) adapterView.getItemAtPosition(i);
+                if (selectedContacts.contains(kontakt)){
+                    Toast.makeText(FriendsActivity2.this, kontakt.getNavn() + " is removed", Toast.LENGTH_SHORT).show();
+                    selectedContacts.remove(kontakt);
+                }else {
+                    selectedContacts.add(kontakt);
+                    Toast.makeText(FriendsActivity2.this, kontakt.getNavn() + " is added", Toast.LENGTH_SHORT).show();
+                    System.out.println(name);
+                    count++;
                 }
-                name += kontakt.getNavn();
-                System.out.println(name);
-                count++;
-
             }
         });
     }

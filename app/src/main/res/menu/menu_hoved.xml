@@ -9,5 +9,9 @@
     <item android:id="@+id/off_notification"
         android:title="Skri av notifikasjoner"
         />
+    <item android:id="@+id/on_sms"
+        android:title="Skru på automatisk sms tjeneste" />
+    <item android:id="@+id/off_sms"
+        android:title="Skru av automatisk sms tjeneste" />
 
 </menu>

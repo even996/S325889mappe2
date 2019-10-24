@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.s325889mappe2">
 
+    <uses-permission android:name="android.permission.SEND_SMS"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -25,12 +28,14 @@
         <activity android:name=".FriendsActivity2"></activity>
         <activity android:name=".ResturanteActivity2"></activity>
         <activity android:name=".OrderTimeActivity"></activity>
-
         <service android:name=".SettPeriodiskService"></service>
+        <service android:name=".SMSService"></service>
         <service android:name=".MinService"></service>
         <receiver android:name=".MinBroadcastReceiver">
             <intent-filter>
-                <action android:name="com.example.servicebroadcast.mittbroadcast">
+                <action android:name="com.example.servicebroadcast.notifikasjonbroadcast">
+                </action>
+                <action android:name="com.example.servicebroadcast.smsbroadcast">
                 </action>
             </intent-filter>
         </receiver>

@@ -45,7 +45,6 @@ public class OrdersActivity extends Activity {
         Intent backIntent = new Intent(this, MainActivity.class);
         startActivity(backIntent);
         finish();
-
     }
 
     public void goToAdd(){
@@ -53,7 +52,6 @@ public class OrdersActivity extends Activity {
             @Override
             public void onClick(View view) {
                 nextIntent();
-
             }
         });
     }

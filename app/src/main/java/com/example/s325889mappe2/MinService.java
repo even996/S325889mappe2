@@ -6,6 +6,7 @@ import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import android.util.Log;
 import android.widget.Toast;
 
 
@@ -20,7 +21,6 @@ public class MinService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId){
-        Toast.makeText(getApplicationContext(), "I minService", Toast.LENGTH_SHORT).show();
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         Intent i = new Intent(this, OrdersActivity.class);
         PendingIntent pIntent = PendingIntent.getActivity(this, 0, i, 0);

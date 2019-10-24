@@ -3,12 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/main"
-
-
-    >
-
-
+    android:background="@drawable/main">
 
     <TextView
         android:layout_width="wrap_content"
@@ -17,49 +12,33 @@
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
         android:textSize="40sp"
-        android:textStyle="bold"
-        />
-
-
-
-
-
-
+        android:textStyle="bold"/>
     <Toolbar
         android:id="@+id/mintoolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#80FFFFFF"
         android:alpha="0.9"
-        android:layout_marginTop="410dp"
-        >
+        android:layout_marginTop="410dp">
+
         <ImageButton
             android:id="@+id/friends_image_button"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginStart="0dp"
-            android:background="@drawable/friendsicon"
-            />
+            android:background="@drawable/friendsicon"/>
         <ImageButton
             android:id="@+id/resturant_imagae_button"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginStart="50dp"
-            android:background="@drawable/dinnericon"
-            />
+            android:background="@drawable/dinnericon"/>
 
         <ImageButton
             android:id="@+id/order_image_button"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_marginStart="30dp"
-            android:background="@drawable/ordericon"
-            />
-
-
-
+            android:background="@drawable/ordericon"/>
     </Toolbar>
-
-
-
 </LinearLayout>

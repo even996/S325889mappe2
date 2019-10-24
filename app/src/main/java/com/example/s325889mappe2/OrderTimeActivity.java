@@ -12,7 +12,7 @@ import androidx.annotation.Nullable;
 public class OrderTimeActivity extends Activity {
 
     EditText editTime;
-    String nameFriend;
+    String nameFriend, tlfFriend;
     String nameResturant;
     private Database db;
     ImageButton addButtonImage;
@@ -28,8 +28,9 @@ public class OrderTimeActivity extends Activity {
         editTime=findViewById(R.id.editText_time);
         addButtonImage=findViewById(R.id.add_image_button);
         Intent recivedIntent = getIntent();
-        nameFriend= recivedIntent.getStringExtra("NAMEFRIEND");
+        nameFriend = recivedIntent.getStringExtra("NAMEFRIEND");
         nameResturant = recivedIntent.getStringExtra("NAMERESTURANT");
+        tlfFriend = recivedIntent.getStringExtra("TLF");
         db = new Database(this);
         addButton();
 
@@ -46,7 +47,14 @@ public class OrderTimeActivity extends Activity {
     }
 
     public void addOrder(){
+        String tlf,name,rest;
         db.addDataOrder(nameFriend, nameResturant, editTime.getText().toString());
+        tlf = getSharedPreferences("PREFERENCES",MODE_PRIVATE).getString("PREFTLF","");
+        name = getSharedPreferences("PREFERENCES",MODE_PRIVATE).getString("PREFNAME","");
+        rest = getSharedPreferences("PREFERENCES",MODE_PRIVATE).getString("PREFREST","");
+        getSharedPreferences("PREFERENCES",MODE_PRIVATE).edit().putString("PREFTLF",tlf + "\n" + tlfFriend).apply();
+        getSharedPreferences("PREFERENCES",MODE_PRIVATE).edit().putString("PREFNAME",name + "\n" + nameFriend).apply();
+        getSharedPreferences("PREFERENCES",MODE_PRIVATE).edit().putString("PREFREST",rest + "\n" + nameResturant).apply();
         Intent intent = new Intent(this, OrdersActivity.class);
         startActivity(intent);
         finish();
@@ -61,8 +69,6 @@ public class OrderTimeActivity extends Activity {
         Intent intent = new Intent(this, ResturanteActivity2.class);
         startActivity(intent);
         finish();
-
-
     }
 
 

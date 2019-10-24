@@ -11,6 +11,11 @@ public class Kontakt {
         this.telefon = telefon;
     }
 
+    Kontakt (String navn, String telefon){
+        this.navn = navn;
+        this.telefon = telefon;
+    }
+
 
 
 

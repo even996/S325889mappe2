@@ -23,7 +23,7 @@ public class ResturanteActivity2 extends Activity {
     Restaurant restaurant;
 
     long ID;
-    String nameFriend;
+    String nameFriend, tlfFriend;
 
     private Database db;
 
@@ -40,7 +40,7 @@ public class ResturanteActivity2 extends Activity {
         onSelect();
         Intent recivedIntent = getIntent();
         nameFriend= recivedIntent.getStringExtra("NAME");
-
+        tlfFriend = recivedIntent.getStringExtra("TLF");
     }
 
     private void viewData(){
@@ -80,6 +80,7 @@ public class ResturanteActivity2 extends Activity {
         //db.addDataOrder(nameFriend, resturant);
         Intent orderIntent = new Intent(this, OrderTimeActivity.class);
         orderIntent.putExtra("NAMEFRIEND", nameFriend);
+        orderIntent.putExtra("TLF",tlfFriend);
         orderIntent.putExtra("NAMERESTURANT", resturant);
         startActivity(orderIntent);
         finish();
@@ -97,7 +98,6 @@ public class ResturanteActivity2 extends Activity {
                 String adress = restaurant.getAddresse();
                 String type = restaurant.getType();
                 selectIntent(name);
-
             }
         });
     }
