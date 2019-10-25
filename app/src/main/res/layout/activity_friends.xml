@@ -47,23 +47,56 @@
   <ListView
       android:id="@+id/listView_resturante"
       android:layout_width="wrap_content"
-      android:layout_height="300dp"
+      android:layout_height="250dp"
       android:layout_marginTop="10dp"
 
       />
 
 
 
+  <ImageButton
+      android:layout_width="90dp"
+      android:layout_height="90dp"
+      android:id="@+id/add_image_button"
+      android:background="@drawable/add"
+      android:alpha="0.8"
+      android:layout_marginStart="220dp"
+      android:layout_marginTop="30dp"
+      />
+  <Toolbar
+      android:id="@+id/mintoolbar"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="#80FFFFFF"
+      android:alpha="0.9"
+      android:layout_marginTop="10dp">
 
     <ImageButton
-        android:layout_marginTop="30dp"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="220dp"
-        android:id="@+id/add_image_button"
-        android:background="@drawable/add"
-        />
+        android:id="@+id/friends_image_button"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@drawable/friendsicon"/>
+    <ImageButton
+        android:id="@+id/resturant_image_button"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="30dp"
+        android:background="@drawable/dinnericon"/>
 
+    <ImageButton
+        android:id="@+id/order_image_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="30dp"
+        android:background="@drawable/ordericon"/>
+
+    <ImageButton
+        android:id="@+id/settings_image_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="30dp"
+        android:background="@drawable/settingsicon"/>
+  </Toolbar>
 
 
 

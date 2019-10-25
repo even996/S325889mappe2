@@ -2,24 +2,66 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@drawable/main">
+    android:layout_height="match_parent">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/settings_title"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="APP NAME"
+        android:text="Settings"
+        android:textSize="40dp"
+        android:gravity="center"
+        />
+
+    <Button
+        android:id="@+id/notification_on"
+        android:layout_marginTop="50dp"
         android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        android:textSize="40sp"
-        android:textStyle="bold"/>
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="NOTIFIKASJON ON"
+        android:background="@drawable/button_style"
+        />
+
+    <Button
+        android:id="@+id/notification_off"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="NOTIFIKASJON OFF"
+        android:background="@drawable/button_style"
+        />
+
+    <Button
+        android:id="@+id/sms_on"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="SMS ON"
+        android:background="@drawable/button_style"
+
+        />
+
+    <Button
+        android:id="@+id/sms_off"
+        android:layout_marginTop="50dp"
+        android:layout_gravity="center"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:text="SMS OFF"
+        android:background="@drawable/button_style"
+        />
+
+
     <Toolbar
         android:id="@+id/mintoolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#80FFFFFF"
         android:alpha="0.9"
-        android:layout_marginTop="415dp">
+        android:layout_marginTop="10dp">
 
         <ImageButton
             android:id="@+id/friends_image_button"
@@ -47,4 +89,5 @@
             android:layout_marginStart="30dp"
             android:background="@drawable/settingsicon"/>
     </Toolbar>
+
 </LinearLayout>

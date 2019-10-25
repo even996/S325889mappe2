@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,8 @@ import java.util.List;
 public class ResturanteActivity extends Activity {
 
     private ListView listView;
+    private ImageButton friendsImageBtn, resturantImageBtn, orderImageBtn, settingsImageBtn;
+
 
     private ImageButton addImageBtn;
     private ArrayList<Restaurant> listItems;
@@ -35,12 +38,20 @@ public class ResturanteActivity extends Activity {
         listView = findViewById(R.id.listView_resturante);
         addImageBtn = findViewById(R.id.add_image_button);
         listItems = new ArrayList<>();
+        friendsImageBtn = findViewById(R.id.friends_image_button);
+        resturantImageBtn = findViewById(R.id.resturant_image_button);
+        orderImageBtn = findViewById(R.id.order_image_button);
+        settingsImageBtn = findViewById(R.id.settings_image_button);
         db = new Database(this);
         listItems = new ArrayList<>();
         viewData();
        // showData();
         goToAdd();
         onEdit();
+        goToFriends();
+        goToOrders();
+        goToSettings();
+        goToResturante();
     }
 
     private void viewData(){
@@ -58,6 +69,42 @@ public class ResturanteActivity extends Activity {
             CustomAdapter2 adapter = new CustomAdapter2(this, R.layout.list_adapter2, listItems);
             listView.setAdapter(adapter);
         }
+    }
+
+    public void goToResturante(){
+        resturantImageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nextIntent(1);
+            }
+        });
+    }
+
+    public void goToFriends(){
+        friendsImageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nextIntent(2);
+            }
+        });
+    }
+
+    public void goToOrders(){
+        orderImageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nextIntent(3);
+            }
+        });
+    }
+
+    public void goToSettings(){
+        settingsImageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nextIntent(4);
+            }
+        });
     }
 
 
@@ -104,6 +151,8 @@ public class ResturanteActivity extends Activity {
 
 
 
+
+
     public void goToAdd(){
         addImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -133,6 +182,33 @@ public class ResturanteActivity extends Activity {
 
         //ArrayAdapter <Kontakt> itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, kontakts);
         listView.setAdapter(itemsAdapter);
+
+    }
+
+    public void nextIntent(int i){
+        switch (i){
+            case 1:
+                Intent intent = new Intent(this, ResturanteActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+            case 2:
+                Intent intent2 = new Intent(this, FriendsActivity.class);
+                startActivity(intent2);
+                finish();
+                break;
+            case 3:
+                Intent intent3 = new Intent(this, OrdersActivity.class);
+                startActivity(intent3);
+                finish();
+                break;
+            case 4:
+                Intent intent4 = new Intent(this, SettingsActivity.class);
+                startActivity(intent4);
+                finish();
+            default:
+                break;
+        }
 
     }
 

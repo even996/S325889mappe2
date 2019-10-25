@@ -28,6 +28,7 @@
         <activity android:name=".FriendsActivity2"></activity>
         <activity android:name=".ResturanteActivity2"></activity>
         <activity android:name=".OrderTimeActivity"></activity>
+        <activity android:name=".SettingsActivity"></activity>
         <service android:name=".SettPeriodiskService"></service>
         <service android:name=".SMSService"></service>
         <service android:name=".MinService"></service>

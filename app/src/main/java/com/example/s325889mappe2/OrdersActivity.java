@@ -17,6 +17,7 @@ public class OrdersActivity extends Activity {
 
 
     private ListView listView;
+    private ImageButton friendsImageBtn, resturantImageBtn, orderImageBtn, settingsImageBtn;
     ImageButton buttonAdd;
     Order order;
     long ID;
@@ -32,11 +33,58 @@ public class OrdersActivity extends Activity {
         listView = findViewById(R.id.listView_resturante);
         buttonAdd = findViewById(R.id.add_image_button);
         listItems= new ArrayList<>();
+        friendsImageBtn = findViewById(R.id.friends_image_button);
+        resturantImageBtn = findViewById(R.id.resturant_image_button);
+        orderImageBtn = findViewById(R.id.order_image_button);
+        settingsImageBtn = findViewById(R.id.settings_image_button);
 
         db = new Database(this);
         viewData();
         goToAdd();
+        goToResturante();
+        goToFriends();
+        goToSettings();
+        goToOrders();
 
+    }
+
+    public void goToResturante(){
+        resturantImageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nextIntent(1);
+            }
+        });
+    }
+
+    public void goToOrders(){
+        orderImageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nextIntent(3);
+            }
+        });
+    }
+
+
+    public void goToFriends(){
+        friendsImageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nextIntent(2);
+            }
+        });
+    }
+
+
+
+    public void goToSettings(){
+        settingsImageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nextIntent(4);
+            }
+        });
     }
 
 
@@ -76,6 +124,33 @@ public class OrdersActivity extends Activity {
             CustomAdapter3 adapter = new CustomAdapter3(this, R.layout.list_adapter3, listItems);
             listView.setAdapter(adapter);
         }
+    }
+
+    public void nextIntent(int i){
+        switch (i){
+            case 1:
+                Intent intent = new Intent(this, ResturanteActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+            case 2:
+                Intent intent2 = new Intent(this, FriendsActivity.class);
+                startActivity(intent2);
+                finish();
+                break;
+            case 3:
+                Intent intent3 = new Intent(this, OrdersActivity.class);
+                startActivity(intent3);
+                finish();
+                break;
+            case 4:
+                Intent intent4 = new Intent(this, SettingsActivity.class);
+                startActivity(intent4);
+                finish();
+            default:
+                break;
+        }
+
     }
 
 }

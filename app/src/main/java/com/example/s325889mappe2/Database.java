@@ -48,8 +48,6 @@ public class Database extends SQLiteOpenHelper {
 
 
 
-
-
     public Database(Context context) {
         super(context, DATABASE_NAME, null, 1);
         //SQLiteDatabase db = this.getWritableDatabase();
@@ -58,9 +56,6 @@ public class Database extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
-        System.out.println(CREATE_TABLE2);
-        System.out.println(CREATE_TABLE3);
 
         db.execSQL(CREATE_TABLE);
         db.execSQL(CREATE_TABLE2);

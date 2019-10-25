@@ -23,7 +23,7 @@ import android.widget.Toolbar;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ImageButton friendsImageBtn, resturantImageBtn, orderImageBtn;
+    private ImageButton friendsImageBtn, resturantImageBtn, orderImageBtn, settingsImageBtn;
     private Database dataBase;
 
     @Override
@@ -32,67 +32,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         dataBase = new Database(this);
         friendsImageBtn = findViewById(R.id.friends_image_button);
-        resturantImageBtn = findViewById(R.id.resturant_imagae_button);
+        resturantImageBtn = findViewById(R.id.resturant_image_button);
         orderImageBtn = findViewById(R.id.order_image_button);
+        settingsImageBtn = findViewById(R.id.settings_image_button);
 
         Toolbar myToolBar = (Toolbar)findViewById(R.id.mintoolbar);
-
+        myToolBar.setTitle("");
         myToolBar.inflateMenu(R.menu.menu_hoved);
         setActionBar(myToolBar);
         goToResturante();
         goToOrders();
         goToFriends();
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu){
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_hoved, menu);
-        return true;
+        goToSettings();
     }
 
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        Intent intent;
-        switch (item.getItemId()){
-            case R.id.on_notification:
-                intent = new Intent();
-                intent.setAction("com.example.servicebroadcast.notifikasjonbroadcast");
-                sendBroadcast(intent);
-                break;
-            case R.id.off_notification:
-                Intent i = new Intent(this, MinService.class);
-                PendingIntent pInent = PendingIntent.getService(this, 0 ,i,0);
-                AlarmManager alarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-                if(alarm != null){
-                    alarm.cancel(pInent);
-                }
-                break;
-            case R.id.on_sms:
-                if (checkPermission(Manifest.permission.SEND_SMS)){
-                    Toast.makeText(this,"SMS-Service is on",Toast.LENGTH_SHORT);
-                    intent = new Intent();
-                    intent.setAction("com.example.servicebroadcast.smsbroadcast");
-                    sendBroadcast(intent);
-                }else{
-                    ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.SEND_SMS},1);
-                    if (checkPermission(Manifest.permission.SEND_SMS)){
-                        Toast.makeText(this,"SMS-Service is on",Toast.LENGTH_SHORT);
-                        intent = new Intent();
-                        intent.setAction("com.example.servicebroadcast.smsbroadcast");
-                        sendBroadcast(intent);
-                    }
-                }
-                break;
-            case R.id.off_sms:
 
-                break;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-        return true;
-    }
 
     public void goToResturante(){
         resturantImageBtn.setOnClickListener(new View.OnClickListener() {
@@ -121,6 +76,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    public void goToSettings(){
+        settingsImageBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                nextIntent(4);
+            }
+        });
+    }
+
     public boolean checkPermission(String permission){
         int check = ContextCompat.checkSelfPermission(this,permission);
         return (check == PackageManager.PERMISSION_GRANTED);
@@ -134,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, ResturanteActivity.class);
                 startActivity(intent);
                 finish();
-                //finish(); funke
                 break;
             case 2:
                 Intent intent2 = new Intent(this, FriendsActivity.class);
@@ -146,6 +109,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent3);
                 finish();
                 break;
+            case 4:
+                Intent intent4 = new Intent(this, SettingsActivity.class);
+                startActivity(intent4);
+                finish();
             default:
                 break;
         }
