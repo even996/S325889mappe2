@@ -108,6 +108,12 @@ public class Database extends SQLiteOpenHelper {
         db.close();
     }
 
+    public void removeDataOrder(long id_inn){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(ORDER_TABLE, ORDER_COL_1 + " =? ", new String[] {Long.toString(id_inn)});
+        db.close();
+    }
+
     public void removeDataResturante(long id_inn){
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(RESTURANT_TABLE, REST_COL_1 + " =? ", new String[] {Long.toString(id_inn)});

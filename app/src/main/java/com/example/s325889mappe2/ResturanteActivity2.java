@@ -90,7 +90,6 @@ public class ResturanteActivity2 extends Activity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(ResturanteActivity2.this, "FriendsList clicked", Toast.LENGTH_SHORT).show();
                 Restaurant restaurant = (Restaurant) adapterView.getItemAtPosition(i);
                 long id = restaurant.getID();
                 String name = restaurant.getNavn();

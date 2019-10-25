@@ -3,8 +3,10 @@ package com.example.s325889mappe2;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -17,7 +19,7 @@ public class OrdersActivity extends Activity {
 
 
     private ListView listView;
-    private ImageButton friendsImageBtn, resturantImageBtn, orderImageBtn, settingsImageBtn;
+    private ImageButton friendsImageBtn, resturantImageBtn, orderImageBtn, settingsImageBtn, deleteButton;
     ImageButton buttonAdd;
     Order order;
     long ID;
@@ -33,6 +35,7 @@ public class OrdersActivity extends Activity {
         listView = findViewById(R.id.listView_resturante);
         buttonAdd = findViewById(R.id.add_image_button);
         listItems= new ArrayList<>();
+        deleteButton=findViewById(R.id.add_image_delete);
         friendsImageBtn = findViewById(R.id.friends_image_button);
         resturantImageBtn = findViewById(R.id.resturant_image_button);
         orderImageBtn = findViewById(R.id.order_image_button);
@@ -45,7 +48,47 @@ public class OrdersActivity extends Activity {
         goToFriends();
         goToSettings();
         goToOrders();
+        onSelect();
+        remove();
 
+    }
+
+
+
+
+    public void remove(){
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                for(Order order : selectedContacts){
+                    System.out.println("erwerewrwerewr");
+                    db.removeDataOrder(order.getId());
+                    nextIntent(3);
+                    finish();
+                }
+            }
+        });
+    }
+
+
+    ArrayList<Order> selectedContacts = new ArrayList();
+    public void onSelect(){
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Order order = (Order) adapterView.getItemAtPosition(i);
+                if (selectedContacts.contains(order)){
+                    //Toast.makeText(FriendsActivity2.this, kontakt.getNavn() + " is removed", Toast.LENGTH_SHORT).show();
+                    selectedContacts.remove(order);
+                    listView.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
+
+                }else {
+                    selectedContacts.add(order);
+                    //Toast.makeText(FriendsActivity2.this, kontakt.getNavn() + " is added", Toast.LENGTH_SHORT).show();
+                    listView.getChildAt(i).setBackgroundColor(Color.GREEN);
+                }
+            }
+        });
     }
 
     public void goToResturante(){

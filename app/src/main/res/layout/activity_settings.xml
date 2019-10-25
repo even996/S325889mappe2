@@ -2,55 +2,59 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/settingsbackground">
 
     <TextView
         android:id="@+id/settings_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
         android:text="Settings"
-        android:textSize="40dp"
+        android:textSize="40sp"
         android:gravity="center"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
         />
 
     <Button
         android:id="@+id/notification_on"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="80dp"
         android:layout_gravity="center"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="NOTIFIKASJON ON"
+        android:text="NOTIFIKASJON PÅ"
         android:background="@drawable/button_style"
         />
 
     <Button
         android:id="@+id/notification_off"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:layout_gravity="center"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="NOTIFIKASJON OFF"
+        android:text="NOTIFIKASJON AV"
         android:background="@drawable/button_style"
         />
 
     <Button
         android:id="@+id/sms_on"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:layout_gravity="center"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="SMS ON"
+        android:text="SMS PÅ"
         android:background="@drawable/button_style"
 
         />
 
     <Button
         android:id="@+id/sms_off"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:layout_gravity="center"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:text="SMS OFF"
+        android:text="SMS AV"
         android:background="@drawable/button_style"
         />
 
@@ -61,7 +65,7 @@
         android:layout_height="wrap_content"
         android:background="#80FFFFFF"
         android:alpha="0.9"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="60dp">
 
         <ImageButton
             android:id="@+id/friends_image_button"

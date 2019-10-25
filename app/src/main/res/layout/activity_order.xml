@@ -64,16 +64,31 @@
       />
 
 
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
-    <ImageButton
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:id="@+id/add_image_button"
-        android:background="@drawable/add"
-        android:alpha="0.8"
-        android:layout_marginStart="220dp"
-        android:layout_marginTop="30dp"
-        />
+  <ImageButton
+      android:layout_width="90dp"
+      android:layout_height="90dp"
+      android:id="@+id/add_image_delete"
+      android:background="@drawable/remove"
+      android:alpha="0.8"
+      android:layout_marginStart="70dp"
+      android:layout_marginTop="30dp"
+      />
+
+  <ImageButton
+      android:layout_width="90dp"
+      android:layout_height="90dp"
+      android:id="@+id/add_image_button"
+      android:background="@drawable/add"
+      android:alpha="0.8"
+      android:layout_marginStart="200dp"
+      android:layout_marginTop="30dp"
+      />
+</RelativeLayout>
+
   <Toolbar
       android:id="@+id/mintoolbar"
       android:layout_width="match_parent"

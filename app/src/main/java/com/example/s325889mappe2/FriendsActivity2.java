@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -94,7 +95,6 @@ public class FriendsActivity2 extends Activity {
         Intent orderIntent = new Intent(this, ResturanteActivity2.class);
         orderIntent.putExtra("NAME", name);
         orderIntent.putExtra("TLF",tlf);
-        System.out.println(name);
         startActivity(orderIntent);
         finish();
 
@@ -107,12 +107,12 @@ public class FriendsActivity2 extends Activity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Kontakt kontakt = (Kontakt) adapterView.getItemAtPosition(i);
                 if (selectedContacts.contains(kontakt)){
-                    Toast.makeText(FriendsActivity2.this, kontakt.getNavn() + " is removed", Toast.LENGTH_SHORT).show();
                     selectedContacts.remove(kontakt);
+                    listView.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
+
                 }else {
                     selectedContacts.add(kontakt);
-                    Toast.makeText(FriendsActivity2.this, kontakt.getNavn() + " is added", Toast.LENGTH_SHORT).show();
-                    System.out.println(name);
+                    listView.getChildAt(i).setBackgroundColor(Color.GREEN);
                     count++;
                 }
             }
