@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLines="1"
-        android:hint="Navn:" />
+        android:hint="@string/name_resturant" />
 
 
 
@@ -29,21 +29,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLines="1"
-        android:hint="Phone:" />
+        android:hint="@string/telefone_friends"
+        android:inputType="number|phone"
+        />
 
     <EditText
         android:id="@+id/editText_res_adress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLines="1"
-        android:hint="Adress:" />
+        android:hint="@string/adress_resturant" />
 
     <EditText
         android:id="@+id/editText_res_type"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLines="1"
-        android:hint="Type:" />
+        android:hint="@string/hint_type_resturant" />
 
 
 

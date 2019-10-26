@@ -9,7 +9,7 @@
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Resturante"
+        android:text="@string/add_title_resturant"
         android:textSize="30sp"
         android:textAlignment="center"
 
@@ -20,21 +20,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLines="1"
-        android:hint="Navn:" />
+        android:hint="@string/hint_name_resturant" />
 
     <EditText
         android:id="@+id/editText_adress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLines="1"
-        android:hint="Adress:" />
+        android:hint="@string/hint_adress_resturant" />
 
     <EditText
         android:id="@+id/editText_telephone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Phone:"
-        android:inputType="number"
+        android:hint="@string/hint_tlf_resturant"
+        android:inputType="number|phone"
         android:maxLines="1" />
 
     <EditText
@@ -42,7 +42,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLines="1"
-        android:hint="Type:" />
+        android:hint="@string/hint_type_resturant" />
 
     <RelativeLayout
         android:layout_width="wrap_content"

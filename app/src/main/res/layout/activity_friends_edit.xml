@@ -9,7 +9,7 @@
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Friends"
+        android:text="@string/edit_friends"
         android:textSize="30sp"
         android:textAlignment="center"
 
@@ -20,7 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLines="1"
-        android:hint="Navn:" />
+        android:hint="@string/hint_name_resturant" />
 
 
 
@@ -28,8 +28,9 @@
         android:id="@+id/editText_telephone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="number|phone"
         android:maxLines="1"
-        android:hint="Phone:" />
+        android:hint="@string/hint_tlf_resturant" />
 
 
 
