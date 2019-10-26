@@ -38,6 +38,8 @@ public class FriendAddActivity extends Activity {
             public void onClick(View view) {
                 Toast.makeText(FriendAddActivity.this, "Venner Added", Toast.LENGTH_SHORT).show();
                 db.addDataFriend(name.getText().toString(), telefone.getText().toString());
+                name.setText("");
+                telefone.setText("");
             }
         });
     }

@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -13,17 +14,22 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.FragmentManager;
 
-public class SettingsActivity extends Activity {
+public class SettingsActivity extends AppCompatActivity implements TimePickerDialog.OnTimeSetListener{
 
-    Button notificationOn, notificationOff, smsOn, smsOff;
+    Button notificationOn, notificationOff, smsOn, smsOff, setTime;
     private ImageButton friendsImageBtn, resturantImageBtn, orderImageBtn, settingsImageBtn;
-    TextView settingsTitle;
+    TextView settingsTitle, timeChossen;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +41,8 @@ public class SettingsActivity extends Activity {
         friendsImageBtn = findViewById(R.id.friends_image_button);
         resturantImageBtn = findViewById(R.id.resturant_image_button);
         orderImageBtn = findViewById(R.id.order_image_button);
+        timeChossen=findViewById(R.id.time_Choosen_TextView);
+        setTime=findViewById(R.id.setTime);
         settingsImageBtn = findViewById(R.id.settings_image_button);
         smsOn = findViewById(R.id.sms_on);
         smsOff = findViewById(R.id.sms_off);
@@ -47,9 +55,26 @@ public class SettingsActivity extends Activity {
         goToOrders();
         goToFriends();
         goToSettings();
+        onSetTime();
 
     }
 
+    @Override
+    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+        String choosen = hourOfDay + ":" + minute;
+        timeChossen.setText(choosen);
+    }
+
+    public void onSetTime(){
+        setTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                DialogFragment timePicker = new ChooseTimeFragment();
+                timePicker.show(getSupportFragmentManager(),"time picker");
+           }
+        });
+    }
 
 
     @Override

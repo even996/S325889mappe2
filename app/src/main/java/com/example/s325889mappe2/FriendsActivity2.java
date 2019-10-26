@@ -24,6 +24,7 @@ public class FriendsActivity2 extends Activity {
     ImageButton buttonNext;
 
     private ArrayList<Kontakt> listItems;
+    ArrayList<Kontakt> selectedContacts = new ArrayList<>();
     ArrayAdapter arrayAdapter;
     Kontakt kontakt;
     private int count= 0;
@@ -75,7 +76,9 @@ public class FriendsActivity2 extends Activity {
         buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                nextIntent(name);
+                if(!selectedContacts.isEmpty()){
+                    nextIntent(name);
+                }
             }
         });
     }
@@ -101,7 +104,6 @@ public class FriendsActivity2 extends Activity {
 
     }
 
-    ArrayList<Kontakt> selectedContacts = new ArrayList();
     public void onSelect(){
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

@@ -22,6 +22,7 @@ public class OrderTimeActivity extends AppCompatActivity implements DatePickerDi
     private Database db;
     ImageButton  nextButtonImage, addButtonImage;
     TextView textViewTime;
+    String currentDateString;
 
 
     ArrayList<Kontakt> nameArrayList;
@@ -53,9 +54,8 @@ public class OrderTimeActivity extends AppCompatActivity implements DatePickerDi
         calender.set(Calendar.YEAR, year);
         calender.set(Calendar.MONTH, month);
         calender.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-        String currentDateString = DateFormat.getDateInstance(DateFormat.DATE_FIELD).format(calender.getTime());
+        currentDateString = DateFormat.getDateInstance(DateFormat.DATE_FIELD).format(calender.getTime());
         textViewTime.setText(currentDateString);
-        System.out.println(currentDateString);
 
 
 
@@ -78,7 +78,10 @@ public class OrderTimeActivity extends AppCompatActivity implements DatePickerDi
         nextButtonImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addOrder();
+                if(textViewTime.getText().toString().equals(currentDateString)){
+                    addOrder();
+                }
+
             }
         });
     }
