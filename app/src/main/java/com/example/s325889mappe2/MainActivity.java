@@ -21,6 +21,9 @@ import android.widget.ImageButton;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
+import java.util.Calendar;
+import java.util.Date;
+
 public class MainActivity extends AppCompatActivity {
 
     private ImageButton friendsImageBtn, resturantImageBtn, orderImageBtn, settingsImageBtn;
@@ -35,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         resturantImageBtn = findViewById(R.id.resturant_image_button);
         orderImageBtn = findViewById(R.id.order_image_button);
         settingsImageBtn = findViewById(R.id.settings_image_button);
+
 
         Toolbar myToolBar = (Toolbar)findViewById(R.id.mintoolbar);
         myToolBar.setTitle("");
@@ -53,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         resturantImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 nextIntent(1);
             }
         });

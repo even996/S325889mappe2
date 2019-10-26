@@ -103,13 +103,27 @@ public class SettingsActivity extends Activity {
 
 
     public void options(int j) {
+        String notifiPref, smsPref;
+        String notfiOn= "ON";
+        String notfiOff= "OFF";
+        String smsON = "ON";
+        String smsOff = "OFF";
+
         switch (j) {
             case 1:
+                System.out.println(smsON);
                 Intent intent = new Intent();
+                notifiPref = getSharedPreferences("PREFERENCES", MODE_PRIVATE).getString("PREPNOTIFI","");
+                getSharedPreferences("PREFERENCES",MODE_PRIVATE).edit().putString("PREPNOTIFI",notfiOn).apply();
                 intent.setAction("com.example.servicebroadcast.notifikasjonbroadcast");
                 sendBroadcast(intent);
+
                 break;
             case 2:
+                System.out.println(smsOff);
+                notifiPref = getSharedPreferences("PREFERENCES", MODE_PRIVATE).getString("PREPNOTIFI","");
+                getSharedPreferences("PREFERENCES",MODE_PRIVATE).edit().putString("PREPNOTIFI", notfiOff).apply();
+
                 Intent i = new Intent(this, MinService.class);
                 PendingIntent pInent = PendingIntent.getService(this, 0, i, 0);
                 AlarmManager alarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
@@ -120,6 +134,8 @@ public class SettingsActivity extends Activity {
 
             case 3:
                 if (checkPermission(Manifest.permission.SEND_SMS)){
+                    smsPref = getSharedPreferences("PREFERENCES", MODE_PRIVATE).getString("PREPSMS","");
+                    getSharedPreferences("PREFERENCES",MODE_PRIVATE).edit().putString("PREPSMS",smsON).apply();
                     Toast.makeText(this,"SMS-Service is on",Toast.LENGTH_SHORT).show();
                     intent = new Intent();
                     intent.setAction("com.example.servicebroadcast.smsbroadcast");
@@ -127,6 +143,8 @@ public class SettingsActivity extends Activity {
                 }else{
                     ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.SEND_SMS},1);
                     if (checkPermission(Manifest.permission.SEND_SMS)){
+                        smsPref = getSharedPreferences("PREFERENCES", MODE_PRIVATE).getString("PREPSMS","");
+                        getSharedPreferences("PREFERENCES",MODE_PRIVATE).edit().putString("PREPSMS",smsON).apply();
                         Toast.makeText(this,"SMS-Service is on",Toast.LENGTH_SHORT).show();
                         intent = new Intent();
                         intent.setAction("com.example.servicebroadcast.smsbroadcast");
@@ -135,7 +153,12 @@ public class SettingsActivity extends Activity {
                 }
                 break;
             case 4:
-                System.out.println("yoyoyo");
+                smsPref = getSharedPreferences("PREFERENCES", MODE_PRIVATE).getString("PREPSMS","");
+                getSharedPreferences("PREFERENCES",MODE_PRIVATE).edit().putString("PREPSMS", smsOff).apply();
+                //PackageManager.PERMISSION_DENIED;
+                //int check = ContextCompat.checkSelfPermission(this,permission);
+
+
                 break;
             default:
                 break;
@@ -144,6 +167,7 @@ public class SettingsActivity extends Activity {
 
     public boolean checkPermission(String permission){
         int check = ContextCompat.checkSelfPermission(this,permission);
+
         return (check == PackageManager.PERMISSION_GRANTED);
     }
 
