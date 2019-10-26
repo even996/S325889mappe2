@@ -250,6 +250,23 @@ public class Database extends SQLiteOpenHelper {
             }
             return restaurantList;
     }
+
+    public Cursor getPhoneNumbers(String time) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT " + FRIENDS_COL_3 +
+                " FROM " + FRIENDS_TABLE +
+                "," + ORDER_TABLE + " WHERE " +
+                FRIENDS_TABLE + "." + FRIENDS_COL_2 +
+                " = " + ORDER_TABLE + "." +
+                ORDER_COL_2 + " AND " +
+                ORDER_TABLE + "." +
+                ORDER_COL_4 + " =  \"" +
+                time + "\"";
+        System.out.println(time + " DETTE ER TIDEN FRA DATABASEN");
+        System.out.println("Dette er SQL Setningen " + query);
+            Cursor cursor = db.rawQuery(query,null);
+            return cursor;
+    }
 }
 
 
