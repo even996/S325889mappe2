@@ -5,9 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,9 +41,8 @@ public class Database extends SQLiteOpenHelper {
             + FRIENDS_COL_2 + " TEXT," + FRIENDS_COL_3 + " TEXT" + ")";
 
     private static final String CREATE_TABLE3 = "CREATE TABLE " +
-            ORDER_TABLE + "(" + ORDER_COL_1 + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+            ORDER_TABLE + "(" + ORDER_COL_1 + " INTEGER,"
             + ORDER_COL_2 + " TEXT," + ORDER_COL_3 + " TEXT," + ORDER_COL_4 + " TEXT" + ")";
-
 
 
     public Database(Context context) {
@@ -71,6 +68,14 @@ public class Database extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    public long getHighestOrderID(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor data = db.rawQuery("SELECT MAX(" + ORDER_COL_1 +") FROM " + ORDER_TABLE,null);
+        if (data.moveToFirst())
+            return data.getLong(0);
+        return 0;
+    }
+
 
     public void addDataResturant(String name, String adress, String telefone, String type){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -83,9 +88,10 @@ public class Database extends SQLiteOpenHelper {
 //        getDatabase(name);
     }
 
-    public void addDataOrder(String name, String resturant, String time){
+    public void addDataOrder(long ID, String name, String resturant, String time){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
+        contentValues.put(ORDER_COL_1, ID);
         contentValues.put(ORDER_COL_2, name);
         contentValues.put(ORDER_COL_3, resturant);
         contentValues.put(ORDER_COL_4, time);

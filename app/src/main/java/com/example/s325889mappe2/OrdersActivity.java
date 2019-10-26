@@ -153,16 +153,43 @@ public class OrdersActivity extends Activity {
         finish();
     }
 
+
     private void viewData(){
         Cursor cursor = db.viewDataOrder();
-
         if(cursor.getCount() == 0){
             Toast.makeText(OrdersActivity.this, "No data to show", Toast.LENGTH_SHORT).show();
         } else {
-
+            //cursor.moveToNext();
+            //order = new Order(cursor.getLong(0), cursor.getString(1), cursor.getString(2), cursor.getString(3));
+            //long lastKnownID = cursor.getLong(0);
+            //String allNames = order.getFriend();
+            //listItems.add(order);
+            String allNames = "";
             while (cursor.moveToNext()){
-                order = new Order(cursor.getLong(0), cursor.getString(1), cursor.getString(2), cursor.getString(3));
-                listItems.add(order);
+                allNames += cursor.getString(1);
+                long lastKnownID = cursor.getLong(0);
+                //listItems.add(order);
+                //listItems.indexOf(order);
+                int position = cursor.getPosition();
+                if (cursor.moveToNext()) {
+                    if (cursor.getLong(0) != lastKnownID) {
+                        cursor.moveToPosition(position);
+                        order = new Order(cursor.getLong(0),allNames,cursor.getString(2),cursor.getString(3));
+                        listItems.add(order);
+                        allNames = "";
+                    }else {
+                        allNames += "\n";
+                        cursor.moveToPosition(position);
+                    }
+                    //allNames += "\n" + cursor.getString(1);
+                }else{
+                    cursor.moveToPosition(position);
+                    order = new Order(cursor.getLong(0),allNames,cursor.getString(2),cursor.getString(3));
+                    listItems.add(order);
+                    allNames = "";
+                }
+                //allNames += "\n" + cursor.getString(1);
+                //order = new Order(cursor.getLong(0), allNames, cursor.getString(2), cursor.getString(3));
             }
             CustomAdapter3 adapter = new CustomAdapter3(this, R.layout.list_adapter3, listItems);
             listView.setAdapter(adapter);

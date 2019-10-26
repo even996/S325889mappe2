@@ -93,6 +93,7 @@ public class FriendsActivity2 extends Activity {
             name += kontakt.getNavn();
         }
         Intent orderIntent = new Intent(this, ResturanteActivity2.class);
+        orderIntent.putExtra("nameList",selectedContacts);
         orderIntent.putExtra("NAME", name);
         orderIntent.putExtra("TLF",tlf);
         startActivity(orderIntent);

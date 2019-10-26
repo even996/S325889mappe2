@@ -26,6 +26,7 @@ public class ResturanteActivity2 extends Activity {
     String nameFriend, tlfFriend;
 
     private Database db;
+    private ArrayList<Kontakt> nameArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,7 @@ public class ResturanteActivity2 extends Activity {
        // showData();
         onSelect();
         Intent recivedIntent = getIntent();
+        nameArrayList = (ArrayList<Kontakt>) recivedIntent.getSerializableExtra("nameList");
         nameFriend= recivedIntent.getStringExtra("NAME");
         tlfFriend = recivedIntent.getStringExtra("TLF");
     }
@@ -82,6 +84,7 @@ public class ResturanteActivity2 extends Activity {
         orderIntent.putExtra("NAMEFRIEND", nameFriend);
         orderIntent.putExtra("TLF",tlfFriend);
         orderIntent.putExtra("NAMERESTURANT", resturant);
+        orderIntent.putExtra("nameList",nameArrayList);
         startActivity(orderIntent);
         finish();
     }

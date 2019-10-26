@@ -1,20 +1,18 @@
 package com.example.s325889mappe2;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 public class OrderTimeActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
@@ -26,7 +24,7 @@ public class OrderTimeActivity extends AppCompatActivity implements DatePickerDi
     TextView textViewTime;
 
 
-
+    ArrayList<Kontakt> nameArrayList;
 
 
 
@@ -42,6 +40,7 @@ public class OrderTimeActivity extends AppCompatActivity implements DatePickerDi
         nameFriend = recivedIntent.getStringExtra("NAMEFRIEND");
         nameResturant = recivedIntent.getStringExtra("NAMERESTURANT");
         tlfFriend = recivedIntent.getStringExtra("TLF");
+        nameArrayList = (ArrayList<Kontakt>) recivedIntent.getSerializableExtra("nameList");
         db = new Database(this);
         nextButton();
         showCalender();
@@ -85,8 +84,17 @@ public class OrderTimeActivity extends AppCompatActivity implements DatePickerDi
     }
 
     public void addOrder(){
+        long highestOrderID = db.getHighestOrderID();
+        ++highestOrderID;
+        System.out.println(highestOrderID + "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        for (Kontakt kontakt : nameArrayList){
+            db.addDataOrder(highestOrderID,kontakt.getNavn(),nameResturant,textViewTime.getText().toString());
+        }
         String tlf,name,rest;
-        db.addDataOrder(nameFriend, nameResturant, textViewTime.getText().toString());
+        highestOrderID = db.getHighestOrderID();
+        System.out.println(highestOrderID + "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+        //db.addDataOrder(++highestOrderID, nameFriend, nameResturant, textViewTime.getText().toString());
+        System.out.println(highestOrderID + "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         tlf = getSharedPreferences("PREFERENCES",MODE_PRIVATE).getString("PREFTLF","");
         name = getSharedPreferences("PREFERENCES",MODE_PRIVATE).getString("PREFNAME","");
         rest = getSharedPreferences("PREFERENCES",MODE_PRIVATE).getString("PREFREST","");

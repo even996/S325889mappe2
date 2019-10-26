@@ -1,6 +1,8 @@
 package com.example.s325889mappe2;
 
-public class Kontakt {
+import java.io.Serializable;
+
+public class Kontakt implements Serializable {
 
     String navn, telefon;
     Long ID;

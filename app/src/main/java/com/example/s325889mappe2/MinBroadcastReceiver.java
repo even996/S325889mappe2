@@ -11,6 +11,7 @@ public class MinBroadcastReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        System.out.println("NÅ KJØRES MINBROADCAST RECEIVER@@@@@@@@@@@@@@@@@@@@@@@@@@");
         Toast.makeText(context, "I order", Toast.LENGTH_SHORT).show();
         Intent i = new Intent(context, SettPeriodiskService.class);
         if (intent.getAction().equals("com.example.servicebroadcast.notifikasjonbroadcast"))

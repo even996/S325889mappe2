@@ -32,7 +32,6 @@ public class SMSService extends Service {
     @Override
     public int onStartCommand(Intent intent, int flags, int startId){
         Toast.makeText(getApplicationContext(), "SENDER SMS N", Toast.LENGTH_SHORT).show();
-        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         String tlf, name, rest,message;
         ArrayList<Kontakt> kontaktArrayList = new ArrayList<>();
         if (checkPermission(Manifest.permission.SEND_SMS)){
