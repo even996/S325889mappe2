@@ -34,8 +34,7 @@
         <service android:name=".MinService"></service>
         <receiver android:name=".MinBroadcastReceiver">
             <intent-filter>
-                <action android:name="com.example.servicebroadcast.notifikasjonbroadcast">
-                </action>
+                <action android:name="com.example.servicebroadcast.notifikasjonbroadcast"/>
                 <action android:name="com.example.servicebroadcast.smsbroadcast">
                 </action>
             </intent-filter>

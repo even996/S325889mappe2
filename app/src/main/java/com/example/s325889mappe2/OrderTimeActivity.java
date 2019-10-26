@@ -54,8 +54,9 @@ public class OrderTimeActivity extends AppCompatActivity implements DatePickerDi
         calender.set(Calendar.YEAR, year);
         calender.set(Calendar.MONTH, month);
         calender.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-        String currentDateString = DateFormat.getDateInstance(DateFormat.FULL).format(calender.getTime());
+        String currentDateString = DateFormat.getDateInstance(DateFormat.DATE_FIELD).format(calender.getTime());
         textViewTime.setText(currentDateString);
+        System.out.println(currentDateString);
 
 
 
