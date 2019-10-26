@@ -56,6 +56,12 @@ public class ResturantAddActivity extends Activity {
                 Toast.makeText(ResturantAddActivity.this, "Resturante Added", Toast.LENGTH_SHORT).show();
                 db.addDataResturant(name.getText().toString(), adress.getText().toString(),
                         telefone.getText().toString(),type.getText().toString());
+                name.setText("");
+                adress.setText("");
+                telefone.setText("");
+                type.setText("");
+
+
             }
         });
     }
