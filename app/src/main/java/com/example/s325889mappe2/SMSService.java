@@ -67,7 +67,6 @@ public class SMSService extends Service {
 
     @Override
     public void onDestroy() {
-        System.out.println("DESTROYER SMS SERVICE");
         this.stopSelf();
         SettPeriodiskService.isSMSServiceRunning = false;
         super.onDestroy();

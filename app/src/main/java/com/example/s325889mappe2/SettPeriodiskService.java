@@ -26,7 +26,6 @@ public class SettPeriodiskService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        System.out.println(isSMSServiceRunning + " DETTE ER SMSSERVICE RUNNING");
         if (intent == null)
             return super.onStartCommand(intent,flags,startId);
 
