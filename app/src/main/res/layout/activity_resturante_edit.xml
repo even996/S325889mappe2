@@ -9,7 +9,7 @@
         android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Resturante"
+        android:text="@string/resturant_edit_title"
         android:textSize="30sp"
         android:textAlignment="center"
 
@@ -31,6 +31,7 @@
         android:maxLines="1"
         android:hint="@string/telefone_friends"
         android:inputType="number|phone"
+        android:maxLength="8"
         />
 
     <EditText

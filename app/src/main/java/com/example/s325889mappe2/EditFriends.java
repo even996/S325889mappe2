@@ -50,9 +50,15 @@ public class EditFriends extends Activity {
         editImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(EditFriends.this, "Venner Editet", Toast.LENGTH_SHORT).show();
-                db.updateTable(ID, editName.getText().toString(), name, editTlf.getText().toString(), telefon);
-                intentBack();
+                if(editName.getText().toString().length() >= 1 && editTlf.getText().toString().length() == 8){
+                    Toast.makeText(EditFriends.this, "Venner Editet", Toast.LENGTH_SHORT).show();
+                    db.updateTable(ID, editName.getText().toString(), name, editTlf.getText().toString(), telefon);
+                    intentBack();
+                }
+                else {
+                    Toast.makeText(EditFriends.this, "Nummeret må ha 8 siffer, eller navn mangler", Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
     }

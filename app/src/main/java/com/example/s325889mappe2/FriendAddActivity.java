@@ -36,15 +36,14 @@ public class FriendAddActivity extends Activity {
         addImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.out.println(telefone.getText().toString().length());
-                if(telefone.getText().toString().length()==8){
+                if(telefone.getText().toString().length()==8 && name.getText().toString().length() >= 1){
                     Toast.makeText(FriendAddActivity.this, "Venn lagt til", Toast.LENGTH_SHORT).show();
                     db.addDataFriend(name.getText().toString(), telefone.getText().toString());
                     name.setText("");
                     telefone.setText("");
                 }
                 else {
-                    Toast.makeText(FriendAddActivity.this, "Nummeret må ha 8 siffer", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(FriendAddActivity.this, "Nummeret må ha 8 siffer, eller navn mangler", Toast.LENGTH_SHORT).show();
 
                 }
             }

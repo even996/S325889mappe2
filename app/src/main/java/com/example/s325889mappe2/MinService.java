@@ -33,8 +33,7 @@ public class MinService extends Service {
             PendingIntent pIntent = PendingIntent.getActivity(this, 0, i, 0);
             Notification notifikation = new Notification.Builder(this)
                     .setContentTitle("Se dine bestillinger")
-                    .setContentText("Teksttekst")
-                    .setSmallIcon(R.mipmap.ic_launcher)
+                    .setSmallIcon(R.drawable.dinnericon)
                     .setContentIntent(pIntent).build();
             if (notifikation.flags != Notification.FLAG_AUTO_CANCEL)
                 notificationManager.notify(0, notifikation);

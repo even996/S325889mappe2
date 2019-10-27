@@ -53,15 +53,19 @@ public class ResturantAddActivity extends Activity {
         addImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(ResturantAddActivity.this, "Resturante Added", Toast.LENGTH_SHORT).show();
-                db.addDataResturant(name.getText().toString(), adress.getText().toString(),
-                        telefone.getText().toString(),type.getText().toString());
-                name.setText("");
-                adress.setText("");
-                telefone.setText("");
-                type.setText("");
+                if(name.getText().toString().length() >= 1 && telefone.getText().toString().length() == 8
+                && adress.getText().toString().length() >= 1 && type.getText().toString().length() >= 1 ){
+                    Toast.makeText(ResturantAddActivity.this, "Resturante Added", Toast.LENGTH_SHORT).show();
+                    db.addDataResturant(name.getText().toString(), adress.getText().toString(),
+                            telefone.getText().toString(),type.getText().toString());
+                    name.setText("");
+                    adress.setText("");
+                    telefone.setText("");
+                    type.setText("");
+                } else {
+                    Toast.makeText(ResturantAddActivity.this, "Telefon har ikke 8 siffer, eller et av feltene er ikke utfylt", Toast.LENGTH_SHORT).show();
 
-
+                }
             }
         });
     }

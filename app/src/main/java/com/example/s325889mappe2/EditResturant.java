@@ -54,10 +54,15 @@ public class EditResturant extends Activity {
         editImageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(EditResturant.this, "Resturante Editet", Toast.LENGTH_SHORT).show();
-                db.updateTableResturante(ID, editName.getText().toString(), name, editTlf.getText().toString(), telefon,
-                        editAdress.getText().toString(), adress, editType.getText().toString(), type);
-                intentBack();
+                if(editName.getText().toString().length() >= 1 && editTlf.getText().toString().length() == 8
+                        && editAdress.getText().toString().length() >= 1 && editType.getText().toString().length() >= 1 ){
+                    Toast.makeText(EditResturant.this, "Resturante redigert", Toast.LENGTH_SHORT).show();
+                    db.updateTableResturante(ID, editName.getText().toString(), name, editTlf.getText().toString(), telefon,
+                            editAdress.getText().toString(), adress, editType.getText().toString(), type);
+                    intentBack();
+                }
+                Toast.makeText(EditResturant.this, "Telefon har ikke 8 siffer, eller et av feltene er ikke utfylt", Toast.LENGTH_SHORT).show();
+
 
             }
         });

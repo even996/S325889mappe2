@@ -30,6 +30,7 @@
         android:layout_height="wrap_content"
         android:inputType="number|phone"
         android:maxLines="1"
+        android:maxLength="8"
         android:hint="@string/hint_tlf_resturant" />
 
 

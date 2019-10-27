@@ -1,6 +1,8 @@
 package com.example.s325889mappe2;
 
 import android.app.Activity;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -50,6 +52,7 @@ public class OrdersActivity extends Activity {
         goToOrders();
         onSelect();
         remove();
+        removeNotifi();
 
     }
 
@@ -70,6 +73,12 @@ public class OrdersActivity extends Activity {
         });
     }
 
+    public void removeNotifi(){
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.cancelAll();
+
+    }
+
 
     ArrayList<Order> selectedContacts = new ArrayList();
     public void onSelect(){
@@ -82,10 +91,11 @@ public class OrdersActivity extends Activity {
                     selectedContacts.remove(order);
                     listView.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
 
+
                 }else {
                     selectedContacts.add(order);
                     //Toast.makeText(FriendsActivity2.this, kontakt.getNavn() + " is added", Toast.LENGTH_SHORT).show();
-                    listView.getChildAt(i).setBackgroundColor(Color.GREEN);
+                   listView.getChildAt(i).setBackgroundColor(Color.GREEN);
                 }
             }
         });
@@ -142,6 +152,7 @@ public class OrdersActivity extends Activity {
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                selectedContacts.clear();
                 nextIntent();
             }
         });
