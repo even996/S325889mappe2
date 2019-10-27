@@ -54,10 +54,26 @@ public class OrderTimeActivity extends AppCompatActivity implements DatePickerDi
         calender.set(Calendar.YEAR, year);
         calender.set(Calendar.MONTH, month);
         calender.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        String currDate = "";
         currentDateString = DateFormat.getDateInstance(DateFormat.DATE_FIELD).format(calender.getTime());
-        textViewTime.setText(currentDateString);
-
-
+        String date[] = currentDateString.split("/");
+        if (Integer.parseInt(date[0]) < 10){
+            date[0] = "0" + date[0] + "/";
+        }else {
+            date[0] = date[0] + "/";
+        }
+        if (Integer.parseInt(date[1]) < 10){
+            date[1] = "0" + date[1] + "/";
+        }else{
+            date[1] = date[1] + "/";
+        }
+        if (Integer.parseInt(date[2]) < 10){
+            date[2] = "0" + date[2];
+        }
+        for (int i = 0; i<date.length; i++){
+            currDate += date[i];
+        }
+        textViewTime.setText(currDate);
 
     }
 

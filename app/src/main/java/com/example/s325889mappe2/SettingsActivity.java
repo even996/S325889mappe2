@@ -86,7 +86,13 @@ public class SettingsActivity extends AppCompatActivity implements TimePickerDia
 
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-        String choosen = hourOfDay + ":" + minute;
+        String hour = hourOfDay + "";
+        String min = minute + "";
+        if (hourOfDay < 10)
+            hour = "0" + hourOfDay;
+        if (minute < 10)
+            min = "0" + minute;
+        String choosen = hour + ":" + min;
         getSharedPreferences("PREFERENCES",MODE_PRIVATE).edit().putString("TIME",choosen).apply();
         timeChossen.setText(choosen);
     }
