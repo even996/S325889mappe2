@@ -48,7 +48,27 @@ public class MainActivity extends AppCompatActivity {
         goToOrders();
         goToFriends();
         goToSettings();
+        System.out.println("JA, DET ER INGENTING I SHARED PREFERENCES 2");
+
+        if(!getSharedPreferences("PREFERENCES",MODE_PRIVATE).contains("PREPSMS"))
+            getSharedPreferences("PREFERENCES",MODE_PRIVATE).edit().putString("PREPSMS","OFF").apply();
+        if(!getSharedPreferences("PREFERENCES",MODE_PRIVATE).contains("PREPNOTIFI"))
+            getSharedPreferences("PREFERENCES",MODE_PRIVATE).edit().putString("PREPNOTIFI","OFF").apply();
+        if (!getSharedPreferences("PREFERENCES",MODE_PRIVATE).contains("TIME"))
+            getSharedPreferences("PREFERENCES",MODE_PRIVATE).edit().putString("TIME","16:00").apply();
+        if (!getSharedPreferences("PREFERENCES",MODE_PRIVATE).contains("MESSAGE"))
+            getSharedPreferences("PREFERENCES",MODE_PRIVATE).edit().putString("MESSAGE","Hei! \n\nikke glem at vi har en middagsavtale i dag!").apply();
+
+
+        //if (getSharedPreferences("PREFERENCES",MODE_PRIVATE).getString("PREPSMS","")){
+        //};
+
+        //getSharedPreferences("PREFERENCES",MODE_PRIVATE).edit().putString("","NO");
+        //getSharedPreferences("PREFERENCES",MODE_PRIVATE).edit().putString("","NO");
+
     }
+
+
 
 
 

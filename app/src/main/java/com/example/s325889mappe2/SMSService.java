@@ -39,52 +39,56 @@ public class SMSService extends Service {
         SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
         String currentTime = sdf.format(new Date());
         System.out.println("Nå kjører vi");
-        if (currentTime.equals("16:53")){
+        String time = getSharedPreferences("PREFERENCES",MODE_PRIVATE).getString("TIME","");
+        System.out.println("TIDEN ER SATT TIL: " + time);
+        if (currentTime.equals(time)){
             System.out.println("TRUEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE" + currentTime);
-        }
+
 
         System.out.println(currentTime + "@@@@@@@@@@@@@@@@@@@blaaaaaaaaaaaaaaaaaaaaa");
-        Toast.makeText(getApplicationContext(), "SENDER SMS N", Toast.LENGTH_SHORT).show();
-        String tlf, name, rest,message;
+        //String tlf, name, rest,message;
         ArrayList<Kontakt> kontaktArrayList = new ArrayList<>();
-        if (checkPermission(Manifest.permission.SEND_SMS)){
-            SimpleDateFormat sdf2 = new SimpleDateFormat("MM/dd/yy");
-            System.out.println(sdf2.format(new Date()) + " Dette er datoformatet som blir sendt inn til DB for sjekk");
-            SmsManager smsManager = SmsManager.getDefault();
-            Database db = new Database(this);
-            Cursor cursor = db.getPhoneNumbers(sdf2.format(new Date()));
-            while (cursor.moveToNext()) {
-                System.out.println(cursor.getString(0) + " DETTE ER CURSOR GETSTRING");
-                smsManager.sendTextMessage(cursor.getString(0), null, "ENDELIG", null, null);
-                System.out.println("SKAL HA SENDT SMS NAA TIL EN PERSON");
-            }
-            db.close();
-            /*tlf = getSharedPreferences("PREFERENCES",MODE_PRIVATE).getString("PREFTLF","");
-            name = getSharedPreferences("PREFERENCES",MODE_PRIVATE).getString("PREFNAME","");
-            rest = getSharedPreferences("PREFERENCES",MODE_PRIVATE).getString("PREFREST","");
-            String[] tlfArray = tlf.split("\n");
-            String[] nameArray = name.split("\n");
-            Kontakt kontakt;
-            for (int i = 1; i<tlfArray.length; i++) {
-                //System.out.println("navn: " + nameArray[i] + " tlf " + tlfArray[i] + " INNE I ARRAYLOOP");
-                kontakt = new Kontakt(nameArray[i],tlfArray[i]);
-                kontaktArrayList.add(kontakt);
-            }
-            name = null;
-            for (Kontakt kontakter : kontaktArrayList){
-                for (Kontakt kont : kontaktArrayList) {
-                    if (kont != kontakter) {
-                        name += kont.navn + ",";
-                        //smsManager.sendTextMessage(kont.telefon, null, "", null, null);
-                    }
+            if (checkPermission(Manifest.permission.SEND_SMS)) {
+                String message = getSharedPreferences("PREFERENCES",MODE_PRIVATE).getString("MESSAGE","");
+                SimpleDateFormat sdf2 = new SimpleDateFormat("MM/dd/yy");
+                System.out.println(sdf2.format(new Date()) + " Dette er datoformatet som blir sendt inn til DB for sjekk");
+                SmsManager smsManager = SmsManager.getDefault();
+                Database db = new Database(this);
+                Cursor cursor = db.getPhoneNumbers(sdf2.format(new Date()));
+                while (cursor.moveToNext()) {
+                    Toast.makeText(getApplicationContext(), "SMS TIL " + cursor.getString(0), Toast.LENGTH_SHORT).show();
+                    System.out.println(cursor.getString(0) + " DETTE ER CURSOR GETSTRING");
+                    smsManager.sendTextMessage(cursor.getString(0), null, message, null, null);
+                    System.out.println("SKAL HA SENDT SMS NAA TIL EN PERSON");
                 }
-                message = "You have an appointment with " + name + " today at " + rest;
-                Date d = new Date();
-                //System.out.println(kontakter.getTelefon() + " navn: " + name + " rest " + rest + "I FOREACH LOOP BEFORE SMS");
+                db.close();
+                /*tlf = getSharedPreferences("PREFERENCES",MODE_PRIVATE).getString("PREFTLF","");
+                name = getSharedPreferences("PREFERENCES",MODE_PRIVATE).getString("PREFNAME","");
+                rest = getSharedPreferences("PREFERENCES",MODE_PRIVATE).getString("PREFREST","");
+                String[] tlfArray = tlf.split("\n");
+                String[] nameArray = name.split("\n");
+                Kontakt kontakt;
+                for (int i = 1; i<tlfArray.length; i++) {
+                    //System.out.println("navn: " + nameArray[i] + " tlf " + tlfArray[i] + " INNE I ARRAYLOOP");
+                    kontakt = new Kontakt(nameArray[i],tlfArray[i]);
+                    kontaktArrayList.add(kontakt);
+                }
+                name = null;
+                for (Kontakt kontakter : kontaktArrayList){
+                    for (Kontakt kont : kontaktArrayList) {
+                        if (kont != kontakter) {
+                            name += kont.navn + ",";
+                            //smsManager.sendTextMessage(kont.telefon, null, "", null, null);
+                        }
+                    }
+                    message = "You have an appointment with " + name + " today at " + rest;
+                    Date d = new Date();
+                    //System.out.println(kontakter.getTelefon() + " navn: " + name + " rest " + rest + "I FOREACH LOOP BEFORE SMS");
 
-            }*/
+                }*/
+            }
         }
-
+        this.stopSelf();
         return super.onStartCommand(intent,flags,startId);
     }
 
@@ -93,4 +97,11 @@ public class SMSService extends Service {
         return (check == PackageManager.PERMISSION_GRANTED);
     }
 
+    @Override
+    public void onDestroy() {
+        System.out.println("DESTROYER SMS SERVICE");
+        this.stopSelf();
+        SettPeriodiskService.isSMSServiceRunning = false;
+        super.onDestroy();
+    }
 }

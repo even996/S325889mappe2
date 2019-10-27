@@ -49,6 +49,8 @@ public class SettingsActivity extends AppCompatActivity implements TimePickerDia
         settingsImageBtn = findViewById(R.id.settings_image_button);
         smsOn = findViewById(R.id.sms_on);
         smsOff = findViewById(R.id.sms_off);
+        String time = getSharedPreferences("PREFERENCES",MODE_PRIVATE).getString("TIME","");
+        timeChossen.setText(time);
         notifiOn();
         notifiOff();
         smsOn();
@@ -61,7 +63,23 @@ public class SettingsActivity extends AppCompatActivity implements TimePickerDia
         changeColorNotifi(i);
         changeColorSms(j);
         System.out.println(i);
+        setCorrectColors();
 
+    }
+
+    public void setCorrectColors(){
+        String smsON = getSharedPreferences("PREFERENCES",MODE_PRIVATE).getString("PREPSMS","");
+        String NotifON = getSharedPreferences("PREFERENCES",MODE_PRIVATE).getString("PREPNOTIFI","");
+        if (smsON.equals("ON")){
+            changeColorSms(2);
+        }else{
+            changeColorSms(1);
+        }
+        if (NotifON.equals("ON")){
+            changeColorNotifi(2);
+        }else{
+            changeColorNotifi(1);
+        }
     }
 
 
@@ -69,6 +87,7 @@ public class SettingsActivity extends AppCompatActivity implements TimePickerDia
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         String choosen = hourOfDay + ":" + minute;
+        getSharedPreferences("PREFERENCES",MODE_PRIVATE).edit().putString("TIME",choosen).apply();
         timeChossen.setText(choosen);
     }
 
@@ -195,6 +214,7 @@ public class SettingsActivity extends AppCompatActivity implements TimePickerDia
                 if (alarm != null) {
                     alarm.cancel(pInent);
                 }
+                stopService(i);
                 break;
 
             case 3:
@@ -220,10 +240,13 @@ public class SettingsActivity extends AppCompatActivity implements TimePickerDia
             case 4:
                 smsPref = getSharedPreferences("PREFERENCES", MODE_PRIVATE).getString("PREPSMS","");
                 getSharedPreferences("PREFERENCES",MODE_PRIVATE).edit().putString("PREPSMS", smsOff).apply();
-                //PackageManager.PERMISSION_DENIED;
-                //int check = ContextCompat.checkSelfPermission(this,permission);
-
-
+                Intent i2 = new Intent(this, SMSService.class);
+                PendingIntent pInent2 = PendingIntent.getService(this, 0, i2, 0);
+                AlarmManager alarm2 = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+                if (alarm2 != null) {
+                    stopService(i2);
+                    alarm2.cancel(pInent2);
+                }
                 break;
             default:
                 break;
