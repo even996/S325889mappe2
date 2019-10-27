@@ -134,25 +134,12 @@ public class FriendsActivity extends Activity {
         for (Kontakt kontakt : kontakts){
             navn.add(kontakt.getNavn());
         }
-        /*
-        String navnet = "";
-        for (Kontakt kontakt : kontakts){
-            navnet += kontakt.getNavn();
-            navnet += " ";
-            navnet += kontakt.getTelefon();
-            navnet += "\n";
-        }
-        navn.add(navnet);
-
-         */
 
 
 
 
         ArrayAdapter <String> itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,navn);
 
-
-        //ArrayAdapter <Kontakt> itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, kontakts);
         listView.setAdapter(itemsAdapter);
 
     }

@@ -108,16 +108,6 @@ public class OrderTimeActivity extends AppCompatActivity implements DatePickerDi
         for (Kontakt kontakt : nameArrayList){
             db.addDataOrder(highestOrderID,kontakt.getNavn(),nameResturant,textViewTime.getText().toString());
         }
-        String tlf,name,rest;
-        highestOrderID = db.getHighestOrderID();
-        //db.addDataOrder(++highestOrderID, nameFriend, nameResturant, textViewTime.getText().toString());
-
-        tlf = getSharedPreferences("PREFERENCES",MODE_PRIVATE).getString("PREFTLF","");
-        name = getSharedPreferences("PREFERENCES",MODE_PRIVATE).getString("PREFNAME","");
-        rest = getSharedPreferences("PREFERENCES",MODE_PRIVATE).getString("PREFREST","");
-        getSharedPreferences("PREFERENCES",MODE_PRIVATE).edit().putString("PREFTLF",tlf + "\n" + tlfFriend).apply();
-        getSharedPreferences("PREFERENCES",MODE_PRIVATE).edit().putString("PREFNAME",name + "\n" + nameFriend).apply();
-        getSharedPreferences("PREFERENCES",MODE_PRIVATE).edit().putString("PREFREST",rest + "\n" + nameResturant).apply();
         Intent intent = new Intent(this, OrdersActivity.class);
         startActivity(intent);
         finish();
@@ -129,7 +119,12 @@ public class OrderTimeActivity extends AppCompatActivity implements DatePickerDi
     }
 
     public void intentBack(){
-        Intent intent = new Intent(this, ResturanteViewActivity.class);
+        Intent intent = new Intent(this, FriendsViewActivity.class);
+        getIntent().removeExtra("nameList");
+        getIntent().removeExtra("NAMEFRIEND");
+        getIntent().removeExtra("NAMERESTURANT");
+        getIntent().removeExtra("TLF");
+
         startActivity(intent);
         finish();
     }

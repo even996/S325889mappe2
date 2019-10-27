@@ -55,7 +55,7 @@ public class ResturantAddActivity extends Activity {
             public void onClick(View view) {
                 if(name.getText().toString().length() >= 1 && telefone.getText().toString().length() == 8
                 && adress.getText().toString().length() >= 1 && type.getText().toString().length() >= 1 ){
-                    Toast.makeText(ResturantAddActivity.this, "Resturante Added", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ResturantAddActivity.this, "Restaurant lagt til", Toast.LENGTH_SHORT).show();
                     db.addDataResturant(name.getText().toString(), adress.getText().toString(),
                             telefone.getText().toString(),type.getText().toString());
                     name.setText("");
