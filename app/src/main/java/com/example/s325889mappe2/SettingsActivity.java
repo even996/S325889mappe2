@@ -62,7 +62,6 @@ public class SettingsActivity extends AppCompatActivity implements TimePickerDia
         onSetTime();
         changeColorNotifi(i);
         changeColorSms(j);
-        System.out.println(i);
         setCorrectColors();
 
     }
@@ -124,7 +123,6 @@ public class SettingsActivity extends AppCompatActivity implements TimePickerDia
             notificationOff.setTextColor(Color.BLACK);
         }
 
-        System.out.println(i);
 
     }
 
@@ -201,7 +199,6 @@ public class SettingsActivity extends AppCompatActivity implements TimePickerDia
 
         switch (j) {
             case 1:
-                System.out.println(smsON);
                 Intent intent = new Intent();
                 notifiPref = getSharedPreferences("PREFERENCES", MODE_PRIVATE).getString("PREPNOTIFI","");
                 getSharedPreferences("PREFERENCES",MODE_PRIVATE).edit().putString("PREPNOTIFI",notfiOn).apply();
@@ -210,7 +207,6 @@ public class SettingsActivity extends AppCompatActivity implements TimePickerDia
 
                 break;
             case 2:
-                System.out.println(smsOff);
                 notifiPref = getSharedPreferences("PREFERENCES", MODE_PRIVATE).getString("PREPNOTIFI","");
                 getSharedPreferences("PREFERENCES",MODE_PRIVATE).edit().putString("PREPNOTIFI", notfiOff).apply();
 
@@ -227,7 +223,6 @@ public class SettingsActivity extends AppCompatActivity implements TimePickerDia
                 if (checkPermission(Manifest.permission.SEND_SMS)){
                     smsPref = getSharedPreferences("PREFERENCES", MODE_PRIVATE).getString("PREPSMS","");
                     getSharedPreferences("PREFERENCES",MODE_PRIVATE).edit().putString("PREPSMS",smsON).apply();
-                    Toast.makeText(this,"SMS-Service is on",Toast.LENGTH_SHORT).show();
                     intent = new Intent();
                     intent.setAction("com.example.servicebroadcast.smsbroadcast");
                     sendBroadcast(intent);
@@ -236,7 +231,6 @@ public class SettingsActivity extends AppCompatActivity implements TimePickerDia
                     if (checkPermission(Manifest.permission.SEND_SMS)){
                         smsPref = getSharedPreferences("PREFERENCES", MODE_PRIVATE).getString("PREPSMS","");
                         getSharedPreferences("PREFERENCES",MODE_PRIVATE).edit().putString("PREPSMS",smsON).apply();
-                        Toast.makeText(this,"SMS-Service is on",Toast.LENGTH_SHORT).show();
                         intent = new Intent();
                         intent.setAction("com.example.servicebroadcast.smsbroadcast");
                         sendBroadcast(intent);

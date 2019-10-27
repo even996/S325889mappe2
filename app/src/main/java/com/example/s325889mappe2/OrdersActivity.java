@@ -62,7 +62,6 @@ public class OrdersActivity extends Activity {
             @Override
             public void onClick(View view) {
                 for(Order order : selectedContacts){
-                    System.out.println("erwerewrwerewr");
                     db.removeDataOrder(order.getId());
                     nextIntent(3);
                     finish();
@@ -85,14 +84,12 @@ public class OrdersActivity extends Activity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Order order = (Order) adapterView.getItemAtPosition(i);
                 if (selectedContacts.contains(order)){
-                    //Toast.makeText(FriendsViewActivity.this, kontakt.getNavn() + " is removed", Toast.LENGTH_SHORT).show();
                     selectedContacts.remove(order);
                     listView.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
 
 
                 }else {
                     selectedContacts.add(order);
-                    //Toast.makeText(FriendsViewActivity.this, kontakt.getNavn() + " is added", Toast.LENGTH_SHORT).show();
                    listView.getChildAt(i).setBackgroundColor(Color.GREEN);
                 }
             }

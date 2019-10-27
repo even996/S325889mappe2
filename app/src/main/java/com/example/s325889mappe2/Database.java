@@ -136,7 +136,6 @@ public class Database extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         //ResultSet rs = db.execSQL("SELECT " + REST_COL_2 + " FROM " + RESTURANT_TABLE + " WHERE " + REST_COL_2 + " = " + "\"" + name + "\"");
         db.execSQL("SELECT " + REST_COL_2 + " FROM " + RESTURANT_TABLE + " WHERE " + REST_COL_2 + " = " + "\"" + name + "\"" );
-        System.out.println(name + "TISS");
     }
 
 
@@ -211,7 +210,6 @@ public class Database extends SQLiteOpenHelper {
     }
 
 
-    //SQL statement -->  1 setning update
 
 
 
@@ -262,8 +260,6 @@ public class Database extends SQLiteOpenHelper {
                 ORDER_TABLE + "." +
                 ORDER_COL_4 + " =  \"" +
                 time + "\"";
-        System.out.println(time + " DETTE ER TIDEN FRA DATABASEN");
-        System.out.println("Dette er SQL Setningen " + query);
             Cursor cursor = db.rawQuery(query,null);
             return cursor;
     }

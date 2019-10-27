@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
         goToOrders();
         goToFriends();
         goToSettings();
-        System.out.println("JA, DET ER INGENTING I SHARED PREFERENCES 2");
 
         if(!getSharedPreferences("PREFERENCES",MODE_PRIVATE).contains("PREPSMS"))
             getSharedPreferences("PREFERENCES",MODE_PRIVATE).edit().putString("PREPSMS","OFF").apply();

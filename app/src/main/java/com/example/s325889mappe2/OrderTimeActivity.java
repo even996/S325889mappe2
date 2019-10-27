@@ -105,15 +105,13 @@ public class OrderTimeActivity extends AppCompatActivity implements DatePickerDi
     public void addOrder(){
         long highestOrderID = db.getHighestOrderID();
         ++highestOrderID;
-        System.out.println(highestOrderID + "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         for (Kontakt kontakt : nameArrayList){
             db.addDataOrder(highestOrderID,kontakt.getNavn(),nameResturant,textViewTime.getText().toString());
         }
         String tlf,name,rest;
         highestOrderID = db.getHighestOrderID();
-        System.out.println(highestOrderID + "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         //db.addDataOrder(++highestOrderID, nameFriend, nameResturant, textViewTime.getText().toString());
-        System.out.println(highestOrderID + "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
+
         tlf = getSharedPreferences("PREFERENCES",MODE_PRIVATE).getString("PREFTLF","");
         name = getSharedPreferences("PREFERENCES",MODE_PRIVATE).getString("PREFNAME","");
         rest = getSharedPreferences("PREFERENCES",MODE_PRIVATE).getString("PREFREST","");

@@ -80,13 +80,11 @@ public class SettPeriodiskService extends Service {
         PendingIntent pintent = PendingIntent.getService(this,0,i,0);
         AlarmManager alarm = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
         alarm.setInexactRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 60 * 1000, pintent);
-        //System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
     }
 
 
     @Override
     public void onDestroy() {
-        System.out.println("NÅ HAR SETTPERIODISK GJORT SITT, DESTROYER NÅ SEGSELV");
         super.onDestroy();
     }
 }
