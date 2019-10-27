@@ -7,14 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class ResturanteActivity2 extends Activity {
+public class ResturanteViewActivity extends Activity {
 
     private ListView listView;
 
@@ -48,7 +46,7 @@ public class ResturanteActivity2 extends Activity {
     private void viewData(){
         Cursor cursor = db.viewDataResturant();
         if(cursor.getCount() == 0){
-            Toast.makeText(ResturanteActivity2.this, "No data to show", Toast.LENGTH_SHORT).show();
+            Toast.makeText(ResturanteViewActivity.this, "No data to show", Toast.LENGTH_SHORT).show();
         } else {
 
             while (cursor.moveToNext()){
@@ -58,7 +56,7 @@ public class ResturanteActivity2 extends Activity {
                 listItems.add(restaurant);
 
             }
-            CustomAdapter2 adapter = new CustomAdapter2(this, R.layout.list_adapter2, listItems);
+            ResturantCustomAdapter adapter = new ResturantCustomAdapter(this, R.layout.list_adapter2, listItems);
             listView.setAdapter(adapter);
         }
     }
@@ -72,8 +70,10 @@ public class ResturanteActivity2 extends Activity {
 
 
     public void backIntent(){
-        Intent homeIntent = new Intent(this, FriendsActivity2.class);
+        Intent homeIntent = new Intent(this, FriendsViewActivity.class);
         startActivity(homeIntent);
+        nameFriend = null;
+        tlfFriend = null;
         finish();
     }
 

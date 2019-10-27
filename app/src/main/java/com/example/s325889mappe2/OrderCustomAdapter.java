@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class CustomAdapter3 extends ArrayAdapter {
+public class OrderCustomAdapter extends ArrayAdapter {
 
 
     private LayoutInflater inflater;
@@ -17,7 +17,7 @@ public class CustomAdapter3 extends ArrayAdapter {
     private int ID;
 
 
-    public CustomAdapter3(Context context, int textViewResourceId, ArrayList<Order> orders) {
+    public OrderCustomAdapter(Context context, int textViewResourceId, ArrayList<Order> orders) {
         super(context,textViewResourceId,orders);
         this.orders=orders;
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

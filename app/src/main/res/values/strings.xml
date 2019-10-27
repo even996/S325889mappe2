@@ -7,14 +7,14 @@
     <string name="add_friends">Legg til venner</string>
     <string name="edit_friends">Endringer for venner</string>
     <string name="friend_order">Venner</string>
-    <string name="resturant_order">Resturant</string>
+    <string name="resturant_order">Restaurant</string>
     <string name="time_order">Tid</string>
     <string name="date_order_title">Velg Dato</string>
     <string name="hint_order">01/01/01</string>
-    <string name="title_resturant">Resturant</string>
+    <string name="title_resturant">Restaurant</string>
     <string name="name_resturant">Navn</string>
     <string name="adress_resturant">Adresse</string>
-    <string name="add_title_resturant">Legg til resturant</string>
+    <string name="add_title_resturant">Legg til Restaurant</string>
     <string name="hint_name_resturant">Navn</string>
     <string name="hint_tlf_resturant">Telefon</string>
     <string name="hint_adress_resturant">Adresse</string>
@@ -26,7 +26,7 @@
     <string name="settings_notifi_off">Notifikasjon AV</string>
     <string name="settings_sms_on">SMS PÅ</string>
     <string name="settings_sms_off">SMS AV</string>
-    <string name="resturant_edit_title">Endringer i resturant</string>
+    <string name="resturant_edit_title">Endringer i Restaurant</string>
 
 
 

@@ -9,8 +9,6 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -87,14 +85,14 @@ public class OrdersActivity extends Activity {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Order order = (Order) adapterView.getItemAtPosition(i);
                 if (selectedContacts.contains(order)){
-                    //Toast.makeText(FriendsActivity2.this, kontakt.getNavn() + " is removed", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(FriendsViewActivity.this, kontakt.getNavn() + " is removed", Toast.LENGTH_SHORT).show();
                     selectedContacts.remove(order);
                     listView.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
 
 
                 }else {
                     selectedContacts.add(order);
-                    //Toast.makeText(FriendsActivity2.this, kontakt.getNavn() + " is added", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(FriendsViewActivity.this, kontakt.getNavn() + " is added", Toast.LENGTH_SHORT).show();
                    listView.getChildAt(i).setBackgroundColor(Color.GREEN);
                 }
             }
@@ -159,7 +157,7 @@ public class OrdersActivity extends Activity {
     }
 
     public void nextIntent(){
-        Intent intent = new Intent(this, FriendsActivity2.class);
+        Intent intent = new Intent(this, FriendsViewActivity.class);
         startActivity(intent);
         finish();
     }
@@ -202,7 +200,7 @@ public class OrdersActivity extends Activity {
                 //allNames += "\n" + cursor.getString(1);
                 //order = new Order(cursor.getLong(0), allNames, cursor.getString(2), cursor.getString(3));
             }
-            CustomAdapter3 adapter = new CustomAdapter3(this, R.layout.list_adapter3, listItems);
+            OrderCustomAdapter adapter = new OrderCustomAdapter(this, R.layout.list_adapter3, listItems);
             listView.setAdapter(adapter);
         }
     }

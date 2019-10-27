@@ -11,7 +11,7 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
-public class CustomAdapter2 extends ArrayAdapter {
+public class ResturantCustomAdapter extends ArrayAdapter {
 
 
     private LayoutInflater inflater;
@@ -19,7 +19,7 @@ public class CustomAdapter2 extends ArrayAdapter {
     private int ID;
 
 
-    public CustomAdapter2(Context context, int textViewResourceId, ArrayList<Restaurant> restaurants) {
+    public ResturantCustomAdapter(Context context, int textViewResourceId, ArrayList<Restaurant> restaurants) {
         super(context,textViewResourceId,restaurants);
         this.restaurants=restaurants;
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);

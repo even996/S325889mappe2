@@ -7,11 +7,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
-import android.widget.Toolbar;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +64,7 @@ public class ResturanteActivity extends Activity {
                 listItems.add(restaurant);
 
             }
-            CustomAdapter2 adapter = new CustomAdapter2(this, R.layout.list_adapter2, listItems);
+            ResturantCustomAdapter adapter = new ResturantCustomAdapter(this, R.layout.list_adapter2, listItems);
             listView.setAdapter(adapter);
         }
     }

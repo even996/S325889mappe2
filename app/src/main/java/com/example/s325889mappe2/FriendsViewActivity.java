@@ -1,7 +1,6 @@
 package com.example.s325889mappe2;
 
 import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
@@ -14,9 +13,8 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class FriendsActivity2 extends Activity {
+public class FriendsViewActivity extends Activity {
 
 
     private ListView listView;
@@ -68,6 +66,7 @@ public class FriendsActivity2 extends Activity {
 
     public void backIntent(){
         Intent homeIntent = new Intent(this, OrdersActivity.class);
+
         startActivity(homeIntent);
         finish();
     }
@@ -95,7 +94,7 @@ public class FriendsActivity2 extends Activity {
             tlf += kontakt.getTelefon();
             name += kontakt.getNavn();
         }
-        Intent orderIntent = new Intent(this, ResturanteActivity2.class);
+        Intent orderIntent = new Intent(this, ResturanteViewActivity.class);
         orderIntent.putExtra("nameList",selectedContacts);
         orderIntent.putExtra("NAME", name);
         orderIntent.putExtra("TLF",tlf);
@@ -127,7 +126,7 @@ public class FriendsActivity2 extends Activity {
         Cursor cursor = db.viewDataFriends();
 
         if(cursor.getCount() == 0){
-            Toast.makeText(FriendsActivity2.this, "No data to show", Toast.LENGTH_SHORT).show();
+            Toast.makeText(FriendsViewActivity.this, "No data to show", Toast.LENGTH_SHORT).show();
         } else {
 
             while (cursor.moveToNext()){
@@ -135,7 +134,7 @@ public class FriendsActivity2 extends Activity {
                 kontakt = new Kontakt(cursor.getLong(0), cursor.getString(1), cursor.getString(2));
                 listItems.add(kontakt);
             }
-            CustomAdapter adapter = new CustomAdapter(this, R.layout.list_adapter, listItems);
+            FriendsCustomAdapter adapter = new FriendsCustomAdapter(this, R.layout.list_adapter, listItems);
             listView.setAdapter(adapter);
         }
     }

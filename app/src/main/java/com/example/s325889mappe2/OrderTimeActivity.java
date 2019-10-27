@@ -81,7 +81,7 @@ public class OrderTimeActivity extends AppCompatActivity implements DatePickerDi
         addButtonImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                DialogFragment datePicker = new DateChooserDialog();
+                DialogFragment datePicker = new DateChooserFragment();
                 datePicker.show(getSupportFragmentManager(), "date picker");
             }
         });
@@ -131,7 +131,7 @@ public class OrderTimeActivity extends AppCompatActivity implements DatePickerDi
     }
 
     public void intentBack(){
-        Intent intent = new Intent(this, ResturanteActivity2.class);
+        Intent intent = new Intent(this, ResturanteViewActivity.class);
         startActivity(intent);
         finish();
     }

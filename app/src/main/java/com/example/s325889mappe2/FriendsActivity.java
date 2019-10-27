@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -120,7 +119,7 @@ public class FriendsActivity extends Activity {
                 kontakt = new Kontakt(cursor.getLong(0), cursor.getString(1), cursor.getString(2));
                 listItems.add(kontakt);
             }
-            CustomAdapter adapter = new CustomAdapter(this, R.layout.list_adapter, listItems);
+            FriendsCustomAdapter adapter = new FriendsCustomAdapter(this, R.layout.list_adapter, listItems);
             listView.setAdapter(adapter);
         }
     }

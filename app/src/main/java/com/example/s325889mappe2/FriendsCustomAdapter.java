@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CustomAdapter extends ArrayAdapter {
+public class FriendsCustomAdapter extends ArrayAdapter {
 
 
     private LayoutInflater inflater;
@@ -20,7 +20,7 @@ public class CustomAdapter extends ArrayAdapter {
     private int ID;
 
 
-    public CustomAdapter(Context context, int textViewResourceId, ArrayList<Kontakt> kontakts) {
+    public FriendsCustomAdapter(Context context, int textViewResourceId, ArrayList<Kontakt> kontakts) {
         super(context,textViewResourceId,kontakts);
         this.kontakts=kontakts;
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
