@@ -57,6 +57,7 @@ public class EditResturant extends Activity {
                 Toast.makeText(EditResturant.this, "Resturante Editet", Toast.LENGTH_SHORT).show();
                 db.updateTableResturante(ID, editName.getText().toString(), name, editTlf.getText().toString(), telefon,
                         editAdress.getText().toString(), adress, editType.getText().toString(), type);
+                intentBack();
 
             }
         });

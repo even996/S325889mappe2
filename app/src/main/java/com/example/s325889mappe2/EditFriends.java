@@ -52,6 +52,7 @@ public class EditFriends extends Activity {
             public void onClick(View view) {
                 Toast.makeText(EditFriends.this, "Venner Editet", Toast.LENGTH_SHORT).show();
                 db.updateTable(ID, editName.getText().toString(), name, editTlf.getText().toString(), telefon);
+                intentBack();
             }
         });
     }

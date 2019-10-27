@@ -8,6 +8,7 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,6 +30,8 @@ public class SettingsActivity extends AppCompatActivity implements TimePickerDia
     Button notificationOn, notificationOff, smsOn, smsOff, setTime;
     private ImageButton friendsImageBtn, resturantImageBtn, orderImageBtn, settingsImageBtn;
     TextView settingsTitle, timeChossen;
+    int i = 1;
+    int j = 1;
 
 
     @Override
@@ -50,14 +53,18 @@ public class SettingsActivity extends AppCompatActivity implements TimePickerDia
         notifiOff();
         smsOn();
         smsOff();
-
         goToResturante();
         goToOrders();
         goToFriends();
         goToSettings();
         onSetTime();
+        changeColorNotifi(i);
+        changeColorSms(j);
+        System.out.println(i);
 
     }
+
+
 
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
@@ -82,6 +89,33 @@ public class SettingsActivity extends AppCompatActivity implements TimePickerDia
         backIntent();
     }
 
+    public void changeColorNotifi(int i){
+        if(i == 1){
+            notificationOff.setTextColor(Color.GREEN);
+            notificationOn.setTextColor(Color.BLACK);
+        }
+        if(i == 2){
+            notificationOn.setTextColor(Color.GREEN);
+            notificationOff.setTextColor(Color.BLACK);
+        }
+
+        System.out.println(i);
+
+    }
+
+
+    public void changeColorSms(int j){
+        if(j == 1){
+            smsOff.setTextColor(Color.GREEN);
+            smsOn.setTextColor(Color.BLACK);
+        }
+        if(j == 2) {
+            smsOff.setTextColor(Color.BLACK);
+            smsOn.setTextColor(Color.GREEN);
+        }
+
+    }
+
 
     public void backIntent(){
         Intent homeIntent = new Intent(this, MainActivity.class);
@@ -94,6 +128,8 @@ public class SettingsActivity extends AppCompatActivity implements TimePickerDia
             @Override
             public void onClick(View view) {
                 options(1);
+                changeColorNotifi(2);
+                i = 2;
             }
         });
     }
@@ -103,6 +139,8 @@ public class SettingsActivity extends AppCompatActivity implements TimePickerDia
             @Override
             public void onClick(View view) {
                 options(2);
+                changeColorNotifi(1);
+                i=1;
             }
         });
     }
@@ -112,6 +150,7 @@ public class SettingsActivity extends AppCompatActivity implements TimePickerDia
             @Override
             public void onClick(View view) {
                 options(3);
+                changeColorSms(2);
             }
         });
     }
@@ -121,6 +160,7 @@ public class SettingsActivity extends AppCompatActivity implements TimePickerDia
             @Override
             public void onClick(View view) {
                 options(4);
+                changeColorSms(1);
             }
         });
     }

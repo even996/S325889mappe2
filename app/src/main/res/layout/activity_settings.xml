@@ -27,12 +27,12 @@
         android:textSize="40sp"
         android:gravity="center"
         android:textColor="@color/black"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="100dp"
         />
 
     <Button
         android:id="@+id/setTime"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="27dp"
         android:layout_gravity="center"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
@@ -40,46 +40,58 @@
         android:background="@drawable/button_style"
         />
 
-    <Button
-        android:id="@+id/notification_on"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center"
-        android:layout_width="150dp"
+    <RelativeLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/settings_notifi_on"
-        android:background="@drawable/button_style"
-        />
-
-    <Button
-        android:id="@+id/notification_off"
         android:layout_marginTop="10dp"
-        android:layout_gravity="center"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:text="@string/settings_notifi_off"
-        android:background="@drawable/button_style"
-        />
+        >
 
-    <Button
-        android:id="@+id/sms_on"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:text="@string/settings_sms_on"
-        android:background="@drawable/button_style"
+        <Button
+            android:id="@+id/notification_on"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="20dp"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_notifi_on"
+            android:background="@drawable/button_style"
+            />
 
-        />
+        <Button
+            android:id="@+id/notification_off"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="190dp"
+            android:layout_gravity="center"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_notifi_off"
+            android:background="@drawable/button_style"
+            />
 
-    <Button
-        android:id="@+id/sms_off"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:text="@string/settings_sms_off"
-        android:background="@drawable/button_style"
-        />
+        <Button
+            android:id="@+id/sms_on"
+            android:layout_marginTop="100dp"
+            android:layout_marginStart="20dp"
+            android:layout_gravity="center"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_sms_on"
+            android:background="@drawable/button_style"
+
+            />
+
+        <Button
+            android:id="@+id/sms_off"
+            android:layout_marginTop="100dp"
+            android:layout_marginStart="190dp"
+            android:layout_gravity="center"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:text="@string/settings_sms_off"
+            android:background="@drawable/button_style"
+            />
+    </RelativeLayout>
+
 
 
     <Toolbar
