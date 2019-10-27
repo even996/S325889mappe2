@@ -29,7 +29,7 @@ public class SettPeriodiskService extends Service {
         if (intent.getStringExtra("Broadcast").equals("Notifikasjon")){
             System.out.println("Kjører notifikasjon i periodisk");
             startNotification();
-        }else if (intent.getStringExtra("Broadcast").equals("SMS")){
+        }else if (intent.getStringExtra("Broadcast").equals("SMS") || getSharedPreferences("PREFERENCES",MODE_PRIVATE).getString("PREPSMS","").equals("ON")){
             System.out.println("Kjører SMS i periodisk");
             startSMS();
         }

@@ -58,6 +58,7 @@ public class SMSService extends Service {
                 smsManager.sendTextMessage(cursor.getString(0), null, "ENDELIG", null, null);
                 System.out.println("SKAL HA SENDT SMS NAA TIL EN PERSON");
             }
+            db.close();
             /*tlf = getSharedPreferences("PREFERENCES",MODE_PRIVATE).getString("PREFTLF","");
             name = getSharedPreferences("PREFERENCES",MODE_PRIVATE).getString("PREFNAME","");
             rest = getSharedPreferences("PREFERENCES",MODE_PRIVATE).getString("PREFREST","");

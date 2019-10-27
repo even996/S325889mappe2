@@ -15,7 +15,7 @@
       android:textStyle="bold"
       android:textColor="#FFFFFF"
       android:textAlignment="center"
-
+      android:dividerHeight="10.0sp"
       />
 
   <RelativeLayout
